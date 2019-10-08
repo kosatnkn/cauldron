@@ -1,5 +1,10 @@
 package main
 
+import (
+	"github.com/kosatnkn/cauldron/project"
+	"github.com/kosatnkn/cauldron/repository"
+)
+
 func main() {
 
 	// command
@@ -16,11 +21,21 @@ func main() {
 	// interactive mode
 	// when tags are not provided use interactive mode
 
+	name := "sample"
+	version := "v1.0.0"
+
 	// process
 	// - clone
 	// - checkout tag
+	repository.Clone(name, version)
+
 	// - remove .git
+	project.Clean()
+
 	// - generate structures
 	// - create splash using name
+	project.Update("sample")
+
 	// - init as new git repo
+	repository.Init()
 }
