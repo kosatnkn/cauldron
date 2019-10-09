@@ -2,7 +2,7 @@ package project
 
 import "fmt"
 
-func Update(name string) {
+func Reconfigure(name string) {
 
 	createSplash(name)
 }
