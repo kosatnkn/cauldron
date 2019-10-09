@@ -1,17 +1,14 @@
 package main
 
-import (
-	"github.com/kosatnkn/cauldron/repository"
-)
+import "github.com/kosatnkn/cauldron/project"
 
 func main() {
+
+	// read input from stdin
 
 	name := "sample"
 	version := "v1.0.0"
 
-	// clone and checkout tag
-	repository.GetBase(name, version)
-
-	// reconfigure project
-	// project.Reconfigure("sample")
+	// create project
+	project.Create(name, version)
 }
