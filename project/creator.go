@@ -29,4 +29,6 @@ func createBase(name string, tag string) error {
 	if err != nil {
 		return err
 	}
+
+	return nil
 }
