@@ -1,6 +1,7 @@
 package project
 
 import (
+	"github.com/kosatnkn/cauldron/errors"
 	"github.com/kosatnkn/cauldron/repository"
 )
 
@@ -11,7 +12,7 @@ func Create(name string, tag string) {
 	// create base
 	err := createBase(name, tag)
 	if err != nil {
-		panic(err)
+		errors.Handle(err)
 	}
 }
 

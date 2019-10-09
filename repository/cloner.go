@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"os"
 
 	"gopkg.in/src-d/go-git.v4"
@@ -11,11 +12,15 @@ const catalystURL string = "https://github.com/kosatnkn/catalyst.git"
 // Clone clones `Catalyst` to a new directory named after the project name.
 func Clone(name string) (*git.Repository, error) {
 
+	fmt.Println("Cloning Catalyst from", catalystURL)
+
 	// get clone dir
 	dir, err := getCloningDir(name)
 	if err != nil {
 		return nil, err
 	}
+
+	// clone
 	opts := &git.CloneOptions{
 		URL:      catalystURL,
 		Progress: os.Stdout,
