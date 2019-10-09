@@ -1,9 +1,6 @@
 package main
 
-import (
-	"github.com/kosatnkn/cauldron/project"
-	"github.com/kosatnkn/cauldron/repository"
-)
+import "github.com/kosatnkn/cauldron/repository"
 
 func main() {
 
@@ -27,15 +24,15 @@ func main() {
 	// process
 	// - clone
 	// - checkout tag
-	repository.Clone(name, version)
+	repository.GetBase(name, version)
 
 	// - remove .git
-	project.Clean()
+	// project.Clean()
 
 	// - generate structures
 	// - create splash using name
-	project.Update("sample")
+	// project.Update("sample")
 
 	// - init as new git repo
-	repository.Init()
+	// repository.Init()
 }
