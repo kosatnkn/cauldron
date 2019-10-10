@@ -3,6 +3,7 @@ module github.com/kosatnkn/cauldron
 go 1.12
 
 require (
+	github.com/common-nighthawk/go-figure v0.0.0-20190529165535-67e0ed34491a // indirect
 	github.com/creack/pty v1.1.9 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/stretchr/testify v1.4.0 // indirect
