@@ -7,6 +7,8 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+
+	"github.com/kosatnkn/cauldron/content"
 )
 
 // considered files
@@ -20,18 +22,18 @@ var currentModule = "github.com/kosatnkn/catalyst"
 // configure configures the project.
 func configure(name string, module string, dir string) error {
 
-	configureImportPaths(dir, currentModule, module)
-
-	// configureSplash(name)
+	// rename import paths
+	err := configureImportPaths(name, dir, currentModule, module)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
 
 // configureImportPaths rewrites all Catalyst import path segments
 // with the given import path segment.
-func configureImportPaths(dir string, currentModule string, module string) error {
-
-	fmt.Println("Configuring imports")
+func configureImportPaths(name string, dir string, currentModule string, module string) error {
 
 	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 
@@ -46,6 +48,12 @@ func configureImportPaths(dir string, currentModule string, module string) error
 			replaceContent(path, currentModule, module)
 		}
 
+		if info.Name() == "styles.go" {
+
+			// create splash
+			configureSplash(name, path)
+		}
+
 		return nil
 	})
 	if err != nil {
@@ -55,13 +63,20 @@ func configureImportPaths(dir string, currentModule string, module string) error
 	return nil
 }
 
-// // configureSplash configures the splash message.
-// func configureSplash(name string) error {
+// configureSplash configures the splash message.
+func configureSplash(name string, file string) error {
 
-// 	fmt.Println("Creating splash for", name)
+	fmt.Println("Creating splash for", name)
 
-// 	return nil
-// }
+	splash := []byte(content.GenerateSplash(name))
+
+	err := ioutil.WriteFile(file, splash, 0666)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
 
 // replaceContent replaces matching strings in file with the given string.
 func replaceContent(file string, phrase string, replacement string) error {

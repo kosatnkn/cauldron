@@ -24,17 +24,17 @@ func Create(name string, modulePart string, tag string) {
 	// TODO: remove later
 	fmt.Println("Module:", module)
 
-	// // create base
-	// err = createBase(dir, tag)
-	// if err != nil {
-	// 	errors.Handle(err)
-	// }
+	// create base
+	err = createBase(dir, tag)
+	if err != nil {
+		errors.Handle(err)
+	}
 
-	// // clean
-	// err = clean(dir)
-	// if err != nil {
-	// 	errors.Handle(err)
-	// }
+	// clean
+	err = clean(dir)
+	if err != nil {
+		errors.Handle(err)
+	}
 
 	// configure
 	err = configure(name, module, dir)

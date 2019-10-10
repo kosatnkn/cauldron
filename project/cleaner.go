@@ -12,8 +12,8 @@ var dirs = []string{
 
 // files to be removed
 var files = []string{
-	"doc.go",
-	"README.md",
+	// "doc.go",
+	// "README.md",
 }
 
 // clean cleans the project directory.
