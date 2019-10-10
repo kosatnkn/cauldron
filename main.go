@@ -8,7 +8,8 @@ func main() {
 
 	name := "sample"
 	version := "v1.1.0"
+	modulePart := "test.com/sampleuser"
 
 	// create project
-	project.Create(name, version)
+	project.Create(name, modulePart, version)
 }
