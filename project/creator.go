@@ -30,6 +30,11 @@ func Create(name string, tag string) {
 		errors.Handle(err)
 	}
 
+	// configure
+	err = configure(name, dir)
+	if err != nil {
+		errors.Handle(err)
+	}
 }
 
 // createBase creates the project base by cloning `Catalyst`
