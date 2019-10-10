@@ -2,17 +2,20 @@ package project
 
 import "fmt"
 
-func Clean() {
+func clean(baseDir string) error {
 
-	fmt.Println("Removing .git")
+	fmt.Println("Cleaning")
+	return nil
 }
 
-func removeDir(dir string) error {
+// deleteDir deletes the given directory.
+func deleteDir(dir string) error {
 
 	return nil
 }
 
-func removeFile() error {
+// deleteFile deletes the given file.
+func deleteFile(file string) error {
 
 	return nil
 }
