@@ -1,6 +1,7 @@
 package project
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/kosatnkn/cauldron/errors"
@@ -52,11 +53,15 @@ func createBase(dir string, tag string) error {
 // getProjectDir gives the directory path to create the repository.
 func getProjectDir(name string) (string, error) {
 
-	// get current location
-	path, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
+	// // get current location
+	// path, err := os.Getwd()
+	// if err != nil {
+	// 	return "", err
+	// }
+
+	// TODO: temporary path. need to remove later
+	path := "/home/kosala/Development/temp"
+	fmt.Println("Using temp path", path)
 
 	// define directory to clone in to
 	dir := path + string(os.PathSeparator) + name
