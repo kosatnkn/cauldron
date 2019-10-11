@@ -21,9 +21,6 @@ func Create(name string, modulePart string, tag string) {
 	// get module
 	module := getModule(modulePart, name)
 
-	// TODO: remove later
-	fmt.Println("Module:", module)
-
 	// create base
 	err = createBase(dir, tag)
 	if err != nil {

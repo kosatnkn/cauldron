@@ -66,9 +66,7 @@ func configureImportPaths(name string, dir string, currentModule string, module 
 // configureSplash configures the splash message.
 func configureSplash(name string, file string) error {
 
-	fmt.Println("Creating splash for", name)
-
-	splash := []byte(content.GenerateSplash(name))
+	splash := []byte(content.GenerateSplashStyle(name))
 
 	err := ioutil.WriteFile(file, splash, 0666)
 	if err != nil {
