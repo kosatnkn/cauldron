@@ -1,21 +1,13 @@
 package project
 
 import (
-	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
 
 	"github.com/kosatnkn/cauldron/content"
 )
-
-// considered files
-var consideredFiles = []string{
-	".go",
-	"go.mod",
-}
 
 var currentModule = "github.com/kosatnkn/catalyst"
 
@@ -74,44 +66,4 @@ func configureSplash(name string, file string) error {
 	}
 
 	return nil
-}
-
-// replaceContent replaces matching strings in file with the given string.
-func replaceContent(file string, phrase string, replacement string) error {
-
-	current, err := ioutil.ReadFile(file)
-	if err != nil {
-		return err
-	}
-
-	output := bytes.Replace(current, []byte(phrase), []byte(replacement), -1)
-
-	err = ioutil.WriteFile(file, output, 0666)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// isConsidered checks whether the directory or the file is ignored.
-func isConsidered(info os.FileInfo) bool {
-
-	if info.IsDir() {
-		return false
-	}
-
-	for _, file := range consideredFiles {
-
-		r, err := regexp.Compile(file)
-		if err != nil {
-			fmt.Println(err)
-		}
-
-		if r.MatchString(info.Name()) {
-			return true
-		}
-	}
-
-	return false
 }
