@@ -1,9 +1,23 @@
 package cli
 
-import "fmt"
+import "github.com/kosatnkn/cauldron/log"
 
 // ShowSplash shows a splash message.
+//
+// More is available at following link.
+// https://www.kammerl.de/ascii/AsciiSignature.php
 func ShowSplash() {
 
-	fmt.Println("Cauldron")
+	splash := `
+	  ___|             |     |                
+	 |      _' | |   | |  _' |  __| _ \  __ \ 
+	 |     (   | |   | | (   | |   (   | |   |
+	\____|\__,_|\__,_|_|\__,_|_|  \___/ _|  _|								 
+	`
+
+	caption := "REST API project generator using `Catalyst` as a base"
+
+	log.Theme(splash)
+	log.Theme(caption)
+	log.Theme("")
 }

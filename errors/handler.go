@@ -1,15 +1,16 @@
 package errors
 
 import (
-	"fmt"
 	"os"
+
+	"github.com/kosatnkn/cauldron/log"
 )
 
 // Handle gracefully handles an error.
 func Handle(err error) {
 
-	fmt.Println("Error:", err)
-	fmt.Println("Cauldron stopped")
+	log.Error(err.Error())
+	log.Info("Cauldron stopped...")
 
 	os.Exit(1)
 }
