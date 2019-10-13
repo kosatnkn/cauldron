@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/kosatnkn/cauldron/errors"
+	"github.com/kosatnkn/cauldron/log"
 	"github.com/kosatnkn/cauldron/repository"
 )
 
@@ -63,7 +64,7 @@ func getProjectDir(name string) (string, error) {
 
 	// TODO: need to remove later
 	path := "/home/kosala/Development/temp"
-	fmt.Println("Using temp path", path)
+	log.Warn("Using temp path " + path + "\n")
 
 	// // get current location
 	// path, err := os.Getwd()

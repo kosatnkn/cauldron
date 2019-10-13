@@ -49,16 +49,16 @@ func log(level string, message string) {
 		av = aurora.Green(message)
 		break
 	case "INFO":
-		av = aurora.Yellow(message)
+		av = aurora.Cyan(message)
 		break
 	case "WARN":
-		av = aurora.Brown(message)
+		av = aurora.Yellow(message)
 		break
 	case "THEME":
 		av = aurora.Blue(message)
 		break
 	default:
-		fmt.Println(message)
+		av = aurora.White(message)
 		break
 	}
 

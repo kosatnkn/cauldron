@@ -17,7 +17,7 @@ func ShowSplash() {
 
 	caption := "REST API project generator using `Catalyst` as a base"
 
-	log.Theme(splash)
-	log.Theme(caption)
-	log.Theme("")
+	log.Default(splash)
+	log.Default(caption)
+	log.Default("")
 }

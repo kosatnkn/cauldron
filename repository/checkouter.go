@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/kosatnkn/cauldron/log"
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 	"gopkg.in/src-d/go-git.v4/plumbing/object"
@@ -27,7 +28,8 @@ func checkoutLatestTag(r *git.Repository) error {
 		return err
 	}
 
-	fmt.Printf("Tag not provided, checking out latest tag (%s)\n", tag)
+	m := fmt.Sprintf("Tag not provided, checking out latest tag (%s)\n", tag)
+	log.Warn(m)
 
 	return checkoutCommit(r, commit)
 }
@@ -40,7 +42,8 @@ func checkoutTag(r *git.Repository, tag string) error {
 		return err
 	}
 
-	fmt.Printf("Checking out tag (%s)\n", tag)
+	m := fmt.Sprintf("\nChecking out tag (%s)", tag)
+	log.Info(m)
 
 	return checkoutCommit(r, commit)
 }
