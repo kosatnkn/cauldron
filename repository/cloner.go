@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/kosatnkn/cauldron/log"
@@ -12,7 +13,8 @@ const catalystURL string = "https://github.com/kosatnkn/catalyst.git"
 // Clone clones `Catalyst` to the given directory.
 func Clone(dir string) (*git.Repository, error) {
 
-	log.Info("Cloning Catalyst from " + catalystURL)
+	m := fmt.Sprintf("\nCloning Catalyst from %s", catalystURL)
+	log.Info(m)
 
 	opts := &git.CloneOptions{
 		URL:      catalystURL,

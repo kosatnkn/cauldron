@@ -11,7 +11,7 @@ import (
 
 // Create creates a new project using `Catalyst` as the base.
 // This will panic if it encounters an error.
-func Create(name string, modulePart string, tag string) {
+func Create(name string, modulePrefix string, tag string) {
 
 	// get project dir
 	dir, err := getProjectDir(name)
@@ -20,7 +20,7 @@ func Create(name string, modulePart string, tag string) {
 	}
 
 	// get module
-	module := getModule(modulePart, name)
+	// module := getModule(modulePrefix, name)
 
 	// create base
 	err = createBase(dir, tag)
@@ -34,8 +34,14 @@ func Create(name string, modulePart string, tag string) {
 		errors.Handle(err)
 	}
 
+	// index
+	idx, err := index(dir)
+	if err != nil {
+		errors.Handle(err)
+	}
+
 	// configure
-	err = configure(name, module, dir)
+	err = configure(name, modulePrefix, idx)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -43,6 +49,9 @@ func Create(name string, modulePart string, tag string) {
 
 // createBase creates the project base by cloning `Catalyst`
 func createBase(dir string, tag string) error {
+
+	m := fmt.Sprintf("\nProject is created in %s", dir)
+	log.Info(m)
 
 	// clone
 	r, err := repository.Clone(dir)
@@ -64,7 +73,7 @@ func getProjectDir(name string) (string, error) {
 
 	// TODO: need to remove later
 	path := "/home/kosala/Development/temp"
-	log.Warn("Using temp path " + path + "\n")
+	log.Warn("\nUsing temp path " + path)
 
 	// // get current location
 	// path, err := os.Getwd()
@@ -78,18 +87,18 @@ func getProjectDir(name string) (string, error) {
 	return dir, nil
 }
 
-// getModule returns the module name using module part and project name.
-func getModule(modulePart string, name string) string {
+// getModule returns the module name using module prefix and project name.
+func getModule(modulePrefix string, name string) string {
 
-	// remove all tailing slashes from module part
+	// remove all tailing slashes from module prefix
 	for {
 
-		if modulePart[len(modulePart)-1:] != "/" {
+		if modulePrefix[len(modulePrefix)-1:] != "/" {
 			break
 		}
 
-		modulePart = modulePart[0 : len(modulePart)-1]
+		modulePrefix = modulePrefix[0 : len(modulePrefix)-1]
 	}
 
-	return fmt.Sprintf("%s/%s", modulePart, name)
+	return fmt.Sprintf("%s/%s", modulePrefix, name)
 }

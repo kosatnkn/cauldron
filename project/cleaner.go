@@ -3,6 +3,8 @@ package project
 import (
 	"fmt"
 	"os"
+
+	"github.com/kosatnkn/cauldron/log"
 )
 
 // directories to be removed
@@ -12,14 +14,13 @@ var dirs = []string{
 
 // files to be removed
 var files = []string{
-	// "doc.go",
-	// "README.md",
+	"doc.go",
 }
 
 // clean cleans the project directory.
 func clean(baseDir string) error {
 
-	fmt.Println("Cleaning")
+	log.Info("\nCleaning")
 
 	baseDir = baseDir + string(os.PathSeparator)
 
