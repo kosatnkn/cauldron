@@ -10,7 +10,6 @@ import (
 )
 
 // Create creates a new project using `Catalyst` as the base.
-// This will panic if it encounters an error.
 func Create(name string, modulePrefix string, tag string) {
 
 	// get project dir
@@ -19,16 +18,13 @@ func Create(name string, modulePrefix string, tag string) {
 		errors.Handle(err)
 	}
 
-	// get module
-	// module := getModule(modulePrefix, name)
-
 	// create base
 	err = createBase(dir, tag)
 	if err != nil {
 		errors.Handle(err)
 	}
 
-	// clean
+	// clean base
 	err = clean(dir)
 	if err != nil {
 		errors.Handle(err)
