@@ -10,11 +10,11 @@ import (
 var currentModule = "github.com/kosatnkn/catalyst"
 
 // configure configures the project.
-func configure(name string, modulePrefix string, files map[string]string) error {
+func configure(name string, simpleName string, modulePrefix string, files map[string]string) error {
 
 	log.Info("\nConfiguring")
 
-	module := getModule(modulePrefix, name)
+	module := getModule(modulePrefix, simpleName)
 
 	for k, file := range files {
 

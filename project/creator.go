@@ -3,6 +3,7 @@ package project
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/kosatnkn/cauldron/errors"
 	"github.com/kosatnkn/cauldron/log"
@@ -12,8 +13,10 @@ import (
 // Create creates a new project using `Catalyst` as the base.
 func Create(name string, modulePrefix string, tag string) {
 
+	simpleName := simplifyName(name)
+
 	// get project dir
-	dir, err := getProjectDir(name)
+	dir, err := getProjectDir(simpleName)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -37,7 +40,7 @@ func Create(name string, modulePrefix string, tag string) {
 	}
 
 	// configure
-	err = configure(name, modulePrefix, idx)
+	err = configure(name, simpleName, modulePrefix, idx)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -97,4 +100,10 @@ func getModule(modulePrefix string, name string) string {
 	}
 
 	return fmt.Sprintf("%s/%s", modulePrefix, name)
+}
+
+// simplifyName removes all illegal characters and lowercase the name.
+func simplifyName(name string) string {
+
+	return strings.ToLower(name)
 }

@@ -11,7 +11,7 @@ func main() {
 
 	// read input from stdin
 
-	name := "sample"
+	name := "Sample"
 	version := "v1.1.0"
 	modulePrefix := "test.com/sampleuser"
 
