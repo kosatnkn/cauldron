@@ -3,6 +3,7 @@ package project
 import (
 	"fmt"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/kosatnkn/cauldron/errors"
@@ -104,6 +105,10 @@ func getModule(modulePrefix string, name string) string {
 
 // simplifyName removes all illegal characters and lowercase the name.
 func simplifyName(name string) string {
+
+	reg, _ := regexp.Compile("[^a-zA-Z0-9]+")
+
+	name = reg.ReplaceAllString(name, "")
 
 	return strings.ToLower(name)
 }
