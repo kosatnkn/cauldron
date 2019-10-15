@@ -9,7 +9,7 @@ import (
 
 var asciiStyle string = "shadow"
 
-// GenerateSplashStyle generates the splash style file using the project name.
+// GenerateSplashStyle generates the content of the splash style file using the project name.
 func GenerateSplashStyle(name string) string {
 
 	splash := generateSplashASCII(name)

@@ -12,6 +12,7 @@ import (
 // considered file signatures for indexing.
 var consideredFiles = []string{
 	".go",
+	"README.md",
 	"go.mod",
 }
 

@@ -1,7 +1,8 @@
 package project
 
 import (
-	"fmt"
+	"os"
+	"strings"
 
 	"github.com/kosatnkn/cauldron/content"
 	"github.com/kosatnkn/cauldron/log"
@@ -15,18 +16,31 @@ func configure(name string, simpleName string, modulePrefix string, files map[st
 	log.Info("\nConfiguring")
 
 	module := getModule(modulePrefix, simpleName)
+	var err error
 
 	for k, file := range files {
 
-		// rewrite splash message
 		// NOTE: allow to fall through without jumping to the next iteration
 		// so that import paths will be properly rewritten
+
+		// rewrite splash message
 		if k == "styles.go" {
-			rewriteSplash(file, name)
+			err = rewriteSplash(file, name)
+			if err != nil {
+				return err
+			}
+		}
+
+		// rewrite readme
+		if k == "README.md" && isBaseReadme(file, simpleName) {
+			err = rewriteReadme(file, name)
+			if err != nil {
+				return err
+			}
 		}
 
 		// rewrite import paths
-		err := rewriteImportPaths(file, module)
+		err = rewriteImportPaths(file, module)
 		if err != nil {
 			return err
 		}
@@ -35,12 +49,22 @@ func configure(name string, simpleName string, modulePrefix string, files map[st
 	return nil
 }
 
+// isBaseReadme checks whether the given readme file is the main readme
+// file at the base of the project.
+func isBaseReadme(file string, simpleName string) bool {
+
+	parts := strings.Split(file, string(os.PathSeparator))
+
+	// checks to see whether the element right before the last is
+	// the name of the base directory
+	return parts[len(parts)-2] == simpleName
+}
+
 // rewriteImportPaths replaces the old module name in the
 // import path with the new module name.
 func rewriteImportPaths(file string, module string) error {
 
-	m := fmt.Sprintf("Configured: %s", file)
-	log.Default(m)
+	log.Default(file)
 
 	return replaceContent(file, currentModule, module)
 }
@@ -51,4 +75,12 @@ func rewriteSplash(file string, name string) error {
 	splash := []byte(content.GenerateSplashStyle(name))
 
 	return write(file, splash)
+}
+
+// rewriteReadme creates a new readme file for the project.
+func rewriteReadme(file string, name string) error {
+
+	readme := []byte(content.GenerateReadme(name))
+
+	return write(file, readme)
 }
