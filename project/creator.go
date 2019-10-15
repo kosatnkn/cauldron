@@ -6,15 +6,16 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/kosatnkn/cauldron/config"
 	"github.com/kosatnkn/cauldron/errors"
 	"github.com/kosatnkn/cauldron/log"
 	"github.com/kosatnkn/cauldron/repository"
 )
 
 // Create creates a new project using `Catalyst` as the base.
-func Create(name string, modulePrefix string, tag string) {
+func Create(cfg config.Config) {
 
-	simpleName := simplifyName(name)
+	simpleName := simplifyName(cfg.Name)
 
 	// get project dir
 	dir, err := getProjectDir(simpleName)
@@ -23,7 +24,7 @@ func Create(name string, modulePrefix string, tag string) {
 	}
 
 	// create base
-	err = createBase(dir, tag)
+	err = createBase(dir, cfg.Tag)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -41,7 +42,7 @@ func Create(name string, modulePrefix string, tag string) {
 	}
 
 	// configure
-	err = configure(name, simpleName, modulePrefix, idx)
+	err = configure(cfg.Name, simpleName, cfg.Namespace, idx)
 	if err != nil {
 		errors.Handle(err)
 	}

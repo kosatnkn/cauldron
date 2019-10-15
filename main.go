@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/kosatnkn/cauldron/cli"
+	"github.com/kosatnkn/cauldron/config"
 	"github.com/kosatnkn/cauldron/project"
 )
 
@@ -11,10 +12,13 @@ func main() {
 
 	// read input from stdin
 
-	name := "Sample"
-	version := "v1.1.0"
-	modulePrefix := "test.com/sampleuser"
+	// set config
+	cfg := config.Config{
+		Name:      "Sample",
+		Namespace: "test.com/sampleuser",
+		Tag:       "v1.1.0",
+	}
 
 	// create project
-	project.Create(name, modulePrefix, version)
+	project.Create(cfg)
 }
