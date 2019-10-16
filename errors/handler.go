@@ -10,7 +10,7 @@ import (
 func Handle(err error) {
 
 	log.Error(err.Error())
-	log.Warn("Cauldron stopped...")
+	log.Warn("\nCauldron stopped")
 
 	os.Exit(1)
 }
