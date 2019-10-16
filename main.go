@@ -25,4 +25,6 @@ func main() {
 
 	// create project
 	project.Create(cfg)
+
+	// git init
 }
