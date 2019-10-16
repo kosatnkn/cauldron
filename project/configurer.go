@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/kosatnkn/cauldron/config"
 	"github.com/kosatnkn/cauldron/content"
 	"github.com/kosatnkn/cauldron/log"
 )
@@ -11,11 +12,11 @@ import (
 var currentModule = "github.com/kosatnkn/catalyst"
 
 // configure configures the project.
-func configure(name string, simpleName string, modulePrefix string, files map[string]string) error {
+func configure(cfg *config.Config, simpleName string, files map[string]string) error {
 
 	log.Info("\nConfiguring")
 
-	module := getModule(modulePrefix, simpleName)
+	module := getModule(cfg.Namespace, simpleName)
 	var err error
 
 	for k, file := range files {
@@ -25,7 +26,7 @@ func configure(name string, simpleName string, modulePrefix string, files map[st
 
 		// rewrite splash message
 		if k == "styles.go" {
-			err = rewriteSplash(file, name)
+			err = rewriteSplash(file, cfg.Name, cfg.SplashStyle)
 			if err != nil {
 				return err
 			}
@@ -33,7 +34,7 @@ func configure(name string, simpleName string, modulePrefix string, files map[st
 
 		// rewrite readme
 		if k == "README.md" && isBaseReadme(file, simpleName) {
-			err = rewriteReadme(file, name)
+			err = rewriteReadme(file, cfg.Name)
 			if err != nil {
 				return err
 			}
@@ -70,9 +71,9 @@ func rewriteImportPaths(file string, module string) error {
 }
 
 // rewriteSplash creates a new splash for the project using the project name.
-func rewriteSplash(file string, name string) error {
+func rewriteSplash(file string, name string, style string) error {
 
-	splash := []byte(content.GenerateSplashStyle(name))
+	splash := []byte(content.GenerateSplashStyle(name, style))
 
 	return write(file, splash)
 }

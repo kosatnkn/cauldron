@@ -13,7 +13,7 @@ import (
 )
 
 // Create creates a new project using `Catalyst` as the base.
-func Create(cfg config.Config) {
+func Create(cfg *config.Config) {
 
 	simpleName := simplifyName(cfg.Name)
 
@@ -42,7 +42,7 @@ func Create(cfg config.Config) {
 	}
 
 	// configure
-	err = configure(cfg.Name, simpleName, cfg.Namespace, idx)
+	err = configure(cfg, simpleName, idx)
 	if err != nil {
 		errors.Handle(err)
 	}

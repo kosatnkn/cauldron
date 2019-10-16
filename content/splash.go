@@ -7,12 +7,10 @@ import (
 	"github.com/common-nighthawk/go-figure"
 )
 
-var asciiStyle string = "shadow"
-
 // GenerateSplashStyle generates the content of the splash style file using the project name.
-func GenerateSplashStyle(name string) string {
+func GenerateSplashStyle(name string, style string) string {
 
-	splash := generateSplashASCII(name)
+	splash := generateSplashASCII(name, style)
 
 	content := `// The ASCII art is generated using the go-figure package
 // https://github.com/common-nighthawk/go-figure
@@ -30,9 +28,9 @@ const StyleShadow string = `
 }
 
 // generateSplashASCII generates the ASCII art.
-func generateSplashASCII(name string) string {
+func generateSplashASCII(name string, style string) string {
 
-	splash := figure.NewFigure(name, asciiStyle, true).String()
+	splash := figure.NewFigure(name, style, true).String()
 
 	// replace backtick (`) with single quote (')
 	// so that back tick string notation will not break

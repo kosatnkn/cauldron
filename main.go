@@ -13,11 +13,15 @@ func main() {
 	// read input from stdin
 
 	// set config
-	cfg := config.Config{
-		Name:      "Sample",
-		Namespace: "test.com/sampleuser",
-		Tag:       "v1.1.0",
+	cfg := &config.Config{
+		Name:        "Sample",
+		Namespace:   "test.com/sampleuser",
+		Tag:         "",
+		SplashStyle: "shadow",
 	}
+
+	// validate config
+	config.Validate(cfg)
 
 	// create project
 	project.Create(cfg)
