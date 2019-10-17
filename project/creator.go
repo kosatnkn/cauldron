@@ -58,7 +58,7 @@ func Create(cfg *config.Config) {
 func createBase(dir string, tag string) error {
 
 	m := fmt.Sprintf("\nProject is created in %s", dir)
-	log.Info(m)
+	log.Note(m)
 
 	// clone
 	r, err := repository.Clone(dir)
