@@ -57,7 +57,7 @@ func Create(cfg *config.Config) {
 // createBase creates the project base by cloning `Catalyst`
 func createBase(dir string, cfg *config.Config) error {
 
-	m := fmt.Sprintf("\nProject is created in %s", dir)
+	m := fmt.Sprintf("Project is created in %s", dir)
 	log.Note(m)
 
 	// clone

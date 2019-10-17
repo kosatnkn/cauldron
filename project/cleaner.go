@@ -20,7 +20,7 @@ var files = []string{
 // clean cleans the project directory.
 func clean(baseDir string) error {
 
-	log.Info("\nCleaning")
+	log.Info("Cleaning")
 
 	baseDir = baseDir + string(os.PathSeparator)
 
@@ -49,7 +49,8 @@ func deleteDirs(baseDir string, dirs []string) error {
 			return err
 		}
 
-		fmt.Println("Removed", dir)
+		m := fmt.Sprintf("\tRemoved %s", dir)
+		log.Default(m)
 	}
 
 	return nil
@@ -65,7 +66,8 @@ func deleteFiles(baseDir string, files []string) error {
 			return err
 		}
 
-		fmt.Println("Removed", file)
+		m := fmt.Sprintf("\tRemoved %s", file)
+		log.Default(m)
 	}
 
 	return nil

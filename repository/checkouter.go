@@ -28,7 +28,7 @@ func checkoutLatestTag(r *git.Repository) error {
 		return err
 	}
 
-	m := fmt.Sprintf("\nTag not provided, checking out latest tag (%s)", tag)
+	m := fmt.Sprintf("Tag not provided, checking out latest tag (%s)", tag)
 	log.Note(m)
 
 	return checkoutCommit(r, commit)
@@ -42,7 +42,7 @@ func checkoutTag(r *git.Repository, tag string) error {
 		return err
 	}
 
-	m := fmt.Sprintf("\nChecking out tag (%s)", tag)
+	m := fmt.Sprintf("Checking out tag (%s)", tag)
 	log.Info(m)
 
 	return checkoutCommit(r, commit)

@@ -15,7 +15,7 @@ var currentModule = "github.com/kosatnkn/catalyst"
 // configure configures the project.
 func configure(cfg *config.Config, simpleName string, files map[string]string) error {
 
-	log.Info("\nConfiguring")
+	log.Info("Configuring")
 
 	module := getModule(cfg.Namespace, simpleName)
 	var err error
@@ -66,7 +66,7 @@ func isBaseReadme(file string, simpleName string) bool {
 // import path with the new module name.
 func rewriteImportPaths(file string, module string) error {
 
-	m := fmt.Sprintf("Configured %s", file)
+	m := fmt.Sprintf("\tConfigured %s", file)
 	log.Default(m)
 
 	return replaceContent(file, currentModule, module)

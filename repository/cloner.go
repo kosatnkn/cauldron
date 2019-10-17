@@ -11,7 +11,7 @@ import (
 // Clone clones `Catalyst` to the given directory.
 func Clone(dir string, url string) (*git.Repository, error) {
 
-	m := fmt.Sprintf("\nCloning Catalyst from %s", url)
+	m := fmt.Sprintf("Cloning Catalyst from %s", url)
 	log.Info(m)
 
 	opts := &git.CloneOptions{

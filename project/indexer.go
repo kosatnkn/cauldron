@@ -20,7 +20,7 @@ var consideredFiles = []string{
 // the considered file name patterns list.
 func index(dir string) (map[string]string, error) {
 
-	log.Info("\nIndexing")
+	log.Info("Indexing")
 
 	idx := make(map[string]string)
 	scanned := 0
@@ -46,7 +46,7 @@ func index(dir string) (map[string]string, error) {
 		return nil, err
 	}
 
-	m := fmt.Sprintf("Indexed %d matching files after scanning %d entries", considered, scanned)
+	m := fmt.Sprintf("\tIndexed %d matching files after scanning %d entries", considered, scanned)
 	log.Default(m)
 
 	return idx, nil

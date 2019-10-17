@@ -29,6 +29,6 @@ func ShowConfig(cfg *config.Config) {
 // ShowComplete shows the completed message.
 func ShowComplete(cfg *config.Config) {
 
-	m := fmt.Sprintf("\nProject `%s` has been created successfully\n", cfg.Name)
+	m := fmt.Sprintf("Project `%s` has been created successfully\n", cfg.Name)
 	log.Info(m)
 }
