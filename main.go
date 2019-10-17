@@ -11,14 +11,17 @@ func main() {
 	// init config
 	cfg := &config.Config{
 		Name:        "",       // Sample
-		Namespace:   "",       // test.com/sampleuser
-		Tag:         "",       // latest
+		Namespace:   "",       // example.com/example
+		Tag:         "",       // v1.0.0
 		SplashStyle: "shadow", // shadow
 	}
 
 	cli.ParseFlags(cfg)
 
 	cli.ShowSplash()
+
+	// clean config
+	cli.CleanConfig(cfg)
 
 	// print config values
 	cli.ShowConfig(cfg)
