@@ -78,15 +78,11 @@ func createBase(dir string, tag string) error {
 // getProjectDir gives the directory path to create the repository.
 func getProjectDir(name string) (string, error) {
 
-	// TODO: need to remove later
-	path := "/home/kosala/Development/temp"
-	log.Warn("\nUsing temp path " + path)
-
-	// // get current location
-	// path, err := os.Getwd()
-	// if err != nil {
-	// 	return "", err
-	// }
+	// get current location
+	path, err := os.Getwd()
+	if err != nil {
+		return "", err
+	}
 
 	// define directory to clone in to
 	dir := path + string(os.PathSeparator) + name
