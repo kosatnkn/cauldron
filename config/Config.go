@@ -6,4 +6,5 @@ type Config struct {
 	Namespace   string
 	Tag         string
 	SplashStyle string
+	Repo        string
 }

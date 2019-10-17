@@ -24,7 +24,7 @@ func Create(cfg *config.Config) {
 	}
 
 	// create base
-	err = createBase(dir, cfg.Tag)
+	err = createBase(dir, cfg)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -55,19 +55,19 @@ func Create(cfg *config.Config) {
 }
 
 // createBase creates the project base by cloning `Catalyst`
-func createBase(dir string, tag string) error {
+func createBase(dir string, cfg *config.Config) error {
 
 	m := fmt.Sprintf("\nProject is created in %s", dir)
 	log.Note(m)
 
 	// clone
-	r, err := repository.Clone(dir)
+	r, err := repository.Clone(dir, cfg.Repo)
 	if err != nil {
 		return err
 	}
 
 	// checkout tag
-	err = repository.Checkout(r, tag)
+	err = repository.Checkout(r, cfg.Tag)
 	if err != nil {
 		return err
 	}

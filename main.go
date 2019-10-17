@@ -14,6 +14,7 @@ func main() {
 		Namespace:   "",       // example.com/example
 		Tag:         "",       // v1.0.0
 		SplashStyle: "shadow", // shadow
+		Repo:        "https://github.com/kosatnkn/catalyst.git",
 	}
 
 	cli.ParseFlags(cfg)

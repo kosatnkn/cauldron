@@ -8,16 +8,14 @@ import (
 	"gopkg.in/src-d/go-git.v4"
 )
 
-const catalystURL string = "https://github.com/kosatnkn/catalyst.git"
-
 // Clone clones `Catalyst` to the given directory.
-func Clone(dir string) (*git.Repository, error) {
+func Clone(dir string, url string) (*git.Repository, error) {
 
-	m := fmt.Sprintf("\nCloning Catalyst from %s", catalystURL)
+	m := fmt.Sprintf("\nCloning Catalyst from %s", url)
 	log.Info(m)
 
 	opts := &git.CloneOptions{
-		URL:      catalystURL,
+		URL:      url,
 		Progress: os.Stdout,
 	}
 
