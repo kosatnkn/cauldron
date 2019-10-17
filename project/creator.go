@@ -46,6 +46,12 @@ func Create(cfg *config.Config) {
 	if err != nil {
 		errors.Handle(err)
 	}
+
+	// init as new repo
+	err = repository.Init(dir)
+	if err != nil {
+		errors.Handle(err)
+	}
 }
 
 // createBase creates the project base by cloning `Catalyst`

@@ -12,11 +12,23 @@ func ShowConfig(cfg *config.Config) {
 
 	log.Info("Configurations")
 
+	tag := "latest"
+	if cfg.Tag != "" {
+		tag = cfg.Tag
+	}
+
 	m := fmt.Sprintf(`
 	Name     : %s
 	Namespace: %s
 	Tag      : %s
-	`, cfg.Name, cfg.Namespace, cfg.Tag)
+	`, cfg.Name, cfg.Namespace, tag)
 
 	log.Default(m)
+}
+
+// ShowComplete shows the completed message.
+func ShowComplete(cfg *config.Config) {
+
+	m := fmt.Sprintf("\nProject `%s` has been created successfully\n", cfg.Name)
+	log.Info(m)
 }

@@ -31,6 +31,11 @@ func Theme(message string) {
 	log("THEME", message)
 }
 
+// Note logs a message as of notification type.
+func Note(message string) {
+	log("NOTE", message)
+}
+
 // Default logs a message as of default type.
 func Default(message string) {
 	log("", message)
@@ -56,6 +61,9 @@ func log(level string, message string) {
 		break
 	case "THEME":
 		av = aurora.Blue(message)
+		break
+	case "NOTE":
+		av = aurora.BrightGreen(message)
 		break
 	default:
 		av = aurora.White(message)

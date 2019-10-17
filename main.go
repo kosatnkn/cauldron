@@ -29,5 +29,6 @@ func main() {
 	// create project
 	project.Create(cfg)
 
-	// git init
+	// complete
+	cli.ShowComplete(cfg)
 }
