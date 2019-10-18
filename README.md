@@ -1,8 +1,8 @@
 # Cauldron
 
 [![Build Status](https://travis-ci.org/kosatnkn/cauldron.svg?branch=master)](https://travis-ci.org/kosatnkn/cauldron)
-![Open Issues](https://img.shields.io/github/issues/kosatnkn/catalyst)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/catalyst)
+![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
 
 Project generator using [Catalyst](https://github.com/kosatnkn/catalyst) as a template.
 
