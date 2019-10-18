@@ -2,6 +2,7 @@ package config
 
 import (
 	"errors"
+	"regexp"
 
 	e "github.com/kosatnkn/cauldron/errors"
 )
@@ -35,8 +36,14 @@ func isNameValid(name string) error {
 // isNameSpaceValid checks whether namespace is valid.
 func isNameSpaceValid(namespace string) error {
 
+	pattern := regexp.MustCompile(`^[a-zA-Z0-9_\-\/.]*$`).MatchString
+
 	if namespace == "" {
 		return errors.New("NameSpace cannot be empty")
+	}
+
+	if !pattern(namespace) {
+		return errors.New("Namespace contain illegal characters")
 	}
 
 	return nil
