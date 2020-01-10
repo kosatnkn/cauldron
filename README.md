@@ -21,6 +21,11 @@ Visit the [Catalyst](https://github.com/kosatnkn/catalyst) base project for more
     git clone https://github.com/kosatnkn/cauldron.git
 ```
 
+**Use latest release**
+```bash
+    git checkout tags/<tag_name> -b <tag_name>
+```
+
 **Install**
 ```bash
     cd cauldron

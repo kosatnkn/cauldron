@@ -22,7 +22,7 @@ func GenerateSplashStyle(name string, style string) string {
 package splash
 
 // StyleShadow shadow style
-const StyleShadow string = `
+const StyleDefault string = `
 
 	return fmt.Sprintf("%s`\n%s`", content, splash)
 }
