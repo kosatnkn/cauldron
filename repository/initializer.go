@@ -9,7 +9,7 @@ import (
 func Init(dir string) error {
 
 	log.Info("Initializing as a new git repo")
-	log.Note("\tYou will have to manually run `git add .` to stage everything in the newly created project")
+	log.Note(" You will have to manually run `git add .` to stage everything in the newly created project")
 
 	_, err := git.PlainInit(dir, false)
 

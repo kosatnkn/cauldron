@@ -50,7 +50,7 @@ func deleteDirs(baseDir string, dirs []string) error {
 			return err
 		}
 
-		m := fmt.Sprintf("\tRemoved %s", dir)
+		m := fmt.Sprintf(" Removed %s", dir)
 		log.Default(m)
 	}
 
@@ -67,7 +67,7 @@ func deleteFiles(baseDir string, files []string) error {
 			return err
 		}
 
-		m := fmt.Sprintf("\tRemoved %s", file)
+		m := fmt.Sprintf(" Removed %s", file)
 		log.Default(m)
 	}
 
