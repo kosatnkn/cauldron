@@ -10,7 +10,7 @@ import (
 // ShowConfig prints config values to the cli.
 func ShowConfig(cfg *config.Config) {
 
-	log.Info("Configurations")
+	log.Info("Project Configurations")
 
 	tag := "latest"
 	if cfg.Tag != "" {
@@ -18,10 +18,10 @@ func ShowConfig(cfg *config.Config) {
 	}
 
 	m := fmt.Sprintf(`
-	Name     : %s
-	Namespace: %s
-	Tag      : %s
-	`, cfg.Name, cfg.Namespace, tag)
+ Name     : %s
+ Namespace: %s
+ Tag      : %s
+`, cfg.Name, cfg.Namespace, tag)
 
 	log.Default(m)
 }

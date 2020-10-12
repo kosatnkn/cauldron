@@ -66,7 +66,7 @@ func isBaseReadme(file string, simpleName string) bool {
 // import path with the new module name.
 func rewriteImportPaths(file string, module string) error {
 
-	m := fmt.Sprintf("\tConfigured %s", file)
+	m := fmt.Sprintf(" Configured %s", file)
 	log.Default(m)
 
 	return replaceContent(file, currentModule, module)

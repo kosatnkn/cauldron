@@ -15,11 +15,12 @@ func main() {
 		Tag:         "",       // v1.0.0
 		SplashStyle: "shadow", // shadow
 		Repo:        "https://github.com/kosatnkn/catalyst.git",
+		Version:     "v1.1.0",
 	}
 
 	cli.ParseFlags(cfg)
 
-	cli.ShowSplash()
+	cli.ShowSplash(cfg)
 
 	// clean config
 	cli.CleanConfig(cfg)

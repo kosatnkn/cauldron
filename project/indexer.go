@@ -46,7 +46,7 @@ func index(dir string) (map[string]string, error) {
 		return nil, err
 	}
 
-	m := fmt.Sprintf("\tIndexed %d matching files after scanning %d entries", considered, scanned)
+	m := fmt.Sprintf(" Indexed %d matching files after scanning %d entries", considered, scanned)
 	log.Default(m)
 
 	return idx, nil

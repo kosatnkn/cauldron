@@ -7,4 +7,5 @@ type Config struct {
 	Tag         string
 	SplashStyle string
 	Repo        string
+	Version     string
 }
