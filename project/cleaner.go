@@ -10,6 +10,7 @@ import (
 // directories to be removed
 var dirs = []string{
 	".git",
+	".github",
 }
 
 // files to be removed
