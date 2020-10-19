@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/kosatnkn/cauldron.svg?branch=master)](https://travis-ci.org/kosatnkn/cauldron)
 ![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kosatnkn/cauldron)](https://goreportcard.com/report/github.com/kosatnkn/cauldron)
 
 Project generator using [Catalyst](https://github.com/kosatnkn/catalyst) as a template.
 
@@ -16,21 +17,8 @@ Visit the [Catalyst](https://github.com/kosatnkn/catalyst) base project for more
 
 ## Installation
 
-**Clone Cauldron**
 ```bash
-    git clone https://github.com/kosatnkn/cauldron.git
-```
-
-**Use latest release**
-```bash
-    git checkout tags/<tag_name> -b <tag_name>
-```
-
-**Install**
-```bash
-    cd cauldron
-
-    go install
+    $ go get github.com/kosatnkn/cauldron
 ```
 
 ## Usage
