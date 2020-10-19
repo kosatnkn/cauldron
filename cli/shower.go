@@ -17,11 +17,9 @@ func ShowConfig(cfg *config.Config) {
 		tag = cfg.Tag
 	}
 
-	m := fmt.Sprintf(`
- Name     : %s
- Namespace: %s
- Tag      : %s
-`, cfg.Name, cfg.Namespace, tag)
+	m := fmt.Sprintf(` Project Name     : %s
+ Project Namespace: %s
+ Catalyst Version : %s`, cfg.Name, cfg.Namespace, tag)
 
 	log.Default(m)
 }
