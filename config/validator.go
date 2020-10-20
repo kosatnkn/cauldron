@@ -27,7 +27,7 @@ func Validate(cfg *Config) {
 func isNameValid(name string) error {
 
 	if name == "" {
-		return errors.New("Name cannot be empty")
+		return errors.New("Project name cannot be empty")
 	}
 
 	return nil

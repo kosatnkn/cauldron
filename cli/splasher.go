@@ -17,7 +17,7 @@ func ShowSplash(cfg *config.Config) {
  |     (   | |   | | (   | |   (   | |   |
 \____|\__,_|\__,_|_|\__,_|_|  \___/ _|  _|`
 
-	caption := `REST API project generator using 'Catalyst' as a base`
+	caption := `Project generator using 'Catalyst' as a base`
 
 	log.Default(splash)
 	log.Default(cfg.Version + "\n")
