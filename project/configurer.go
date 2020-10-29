@@ -22,9 +22,8 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 	for k, file := range files {
 
-		// extract file name from key
-		keyParts := strings.Split(k, "|")
-		fileName := keyParts[len(keyParts)-1]
+		// extract file name from key by removing prefix
+		fileName := strings.Split(k, "|")[1]
 
 		// NOTE: allow to fall through without jumping to the next iteration
 		// so that import paths will be properly rewritten
