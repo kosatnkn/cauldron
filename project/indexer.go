@@ -2,6 +2,7 @@ package project
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -32,13 +33,17 @@ func index(dir string) (map[string]string, error) {
 			return err
 		}
 
-		scanned++
-
 		if isConsidered(info) {
 
+			// add a temporary random prefix to the index key to avoid overwriting entries
+			// a seperator is added to differentiate the prefix if needed
+			k := randomString(10) + "|" + info.Name()
+			idx[k] = path
+
 			considered++
-			idx[info.Name()] = path
 		}
+
+		scanned++
 
 		return nil
 	})
@@ -72,4 +77,17 @@ func isConsidered(info os.FileInfo) bool {
 	}
 
 	return false
+}
+
+// randomString creates a random string of given length.
+func randomString(n int) string {
+
+	var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+
+	s := make([]rune, n)
+	for i := range s {
+		s[i] = letters[rand.Intn(len(letters))]
+	}
+
+	return string(s)
 }

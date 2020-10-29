@@ -22,11 +22,15 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 	for k, file := range files {
 
+		// extract file name from key
+		keyParts := strings.Split(k, "|")
+		fileName := keyParts[len(keyParts)-1]
+
 		// NOTE: allow to fall through without jumping to the next iteration
 		// so that import paths will be properly rewritten
 
 		// rewrite splash message
-		if k == "styles.go" {
+		if fileName == "styles.go" {
 			err = rewriteSplash(file, cfg.Name, cfg.SplashStyle)
 			if err != nil {
 				return err
@@ -34,7 +38,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 		}
 
 		// rewrite readme
-		if k == "README.md" && isBaseReadme(file, simpleName) {
+		if fileName == "README.md" && isBaseReadme(file, simpleName) {
 			err = rewriteReadme(file, cfg.Name)
 			if err != nil {
 				return err
