@@ -1,6 +1,6 @@
 # Cauldron
 
-[![Build Status](https://travis-ci.org/kosatnkn/cauldron.svg?branch=master)](https://travis-ci.org/kosatnkn/cauldron)
+[![Actions Status](https://github.com/kosatnkn/cauldron/workflows/CI/badge.svg)](https://github.com/kosatnkn/cauldron/actions)
 ![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kosatnkn/cauldron)](https://goreportcard.com/report/github.com/kosatnkn/cauldron)
