@@ -107,9 +107,13 @@ func getModule(modulePrefix string, name string) string {
 }
 
 // simplifyName removes all illegal characters and lowercase the name.
+//
+// Will only allow lower case letters, numbers and `-` character.
+// Upper case characters will be converted to lower case characters and
+// any other non permitted characters will be removed.
 func simplifyName(name string) string {
 
-	reg, _ := regexp.Compile("[^a-zA-Z0-9]+")
+	reg, _ := regexp.Compile("[^a-zA-Z0-9-]+")
 
 	name = reg.ReplaceAllString(name, "")
 
