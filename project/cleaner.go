@@ -16,7 +16,6 @@ var dirs = []string{
 // files to be removed
 var files = []string{
 	"doc.go",
-	".travis.yml",
 }
 
 // clean cleans the project directory.

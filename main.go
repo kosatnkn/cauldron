@@ -15,7 +15,9 @@ func main() {
 		Tag:         "",       // v1.0.0
 		SplashStyle: "shadow", // shadow
 		Repo:        "https://github.com/kosatnkn/catalyst.git",
-		Version:     "v1.2.2",
+
+		// Version number of Cauldron
+		Version: "v1.3.0",
 	}
 
 	cli.ParseFlags(cfg)
