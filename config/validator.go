@@ -12,12 +12,12 @@ func Validate(cfg *Config) {
 
 	var err error
 
-	err = isNameValid(cfg.Name)
+	err = isNameValid(cfg.Project.Name)
 	if err != nil {
 		e.Handle(err)
 	}
 
-	err = isNameSpaceValid(cfg.Namespace)
+	err = isNameSpaceValid(cfg.Project.Namespace)
 	if err != nil {
 		e.Handle(err)
 	}

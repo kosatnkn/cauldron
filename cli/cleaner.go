@@ -9,8 +9,8 @@ import (
 // CleanConfig cleans values in config
 func CleanConfig(cfg *config.Config) {
 
-	cfg.Name = cleanString(cfg.Name)
-	cfg.Namespace = cleanString(cfg.Namespace)
+	cfg.Project.Name = cleanString(cfg.Project.Name)
+	cfg.Project.Namespace = cleanString(cfg.Project.Namespace)
 }
 
 // clean cleans the input value.

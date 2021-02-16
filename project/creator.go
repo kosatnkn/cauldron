@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/kosatnkn/cauldron/config"
@@ -12,10 +13,10 @@ import (
 	"github.com/kosatnkn/cauldron/repository"
 )
 
-// Create creates a new project using `Catalyst` as the base.
+// Create creates a new project using the base project.
 func Create(cfg *config.Config) {
 
-	simpleName := simplifyName(cfg.Name)
+	simpleName := simplifyName(cfg.Project.Name)
 
 	// get project dir
 	dir, err := getProjectDir(simpleName)
@@ -54,25 +55,43 @@ func Create(cfg *config.Config) {
 	}
 }
 
-// createBase creates the project base by cloning `Catalyst`
+// createBase creates the project base by cloning the base repository.
 func createBase(dir string, cfg *config.Config) error {
 
 	m := fmt.Sprintf("Project is created in %s", dir)
 	log.Note(m)
 
 	// clone
-	r, err := repository.Clone(dir, cfg.Repo)
+	r, err := repository.Clone(dir, cfg.Base.Repo)
 	if err != nil {
 		return err
 	}
 
 	// checkout tag
-	err = repository.Checkout(r, cfg.Tag)
+	tag := cfg.Base.Version
+	if tag == "" {
+		tag = cfg.Base.MaxVersion
+	}
+	if isIllegalVersion(cfg, tag) {
+		return fmt.Errorf(`Creating a new project using '%s' of '%s' is not supported by Cauldron '%s'`, tag, cfg.Base.Repo, cfg.Cauldron.Version)
+	}
+
+	err = repository.Checkout(r, tag)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+// isIllegalVersion checks whether the provided version is supported by Cauldron.
+func isIllegalVersion(cfg *config.Config, version string) bool {
+
+	v, _ := strconv.Atoi(strings.Join(strings.Split(version[1:], "."), ""))
+	min, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MinVersion[1:], "."), ""))
+	max, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MaxVersion[1:], "."), ""))
+
+	return v >= min && v <= max
 }
 
 // getProjectDir gives the directory path to create the repository.
