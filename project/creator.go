@@ -72,7 +72,7 @@ func createBase(dir string, cfg *config.Config) error {
 	if tag == "" {
 		tag = cfg.Base.MaxVersion
 	}
-	if isIllegalVersion(cfg, tag) {
+	if !isVersionInRange(tag, cfg.Base.MinVersion, cfg.Base.MaxVersion) {
 		return fmt.Errorf(`Creating a new project using '%s' of '%s' is not supported by Cauldron '%s'`, tag, cfg.Base.Repo, cfg.Cauldron.Version)
 	}
 
@@ -84,14 +84,14 @@ func createBase(dir string, cfg *config.Config) error {
 	return nil
 }
 
-// isIllegalVersion checks whether the provided version is supported by Cauldron.
-func isIllegalVersion(cfg *config.Config, version string) bool {
+// isVersionInRange checks whether the provided version is in the supported version range.
+func isVersionInRange(version, min, max string) bool {
 
 	v, _ := strconv.Atoi(strings.Join(strings.Split(version[1:], "."), ""))
-	min, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MinVersion[1:], "."), ""))
-	max, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MaxVersion[1:], "."), ""))
+	mn, _ := strconv.Atoi(strings.Join(strings.Split(min[1:], "."), ""))
+	mx, _ := strconv.Atoi(strings.Join(strings.Split(max[1:], "."), ""))
 
-	return v >= min && v <= max
+	return v >= mn && v <= mx
 }
 
 // getProjectDir gives the directory path to create the repository.
