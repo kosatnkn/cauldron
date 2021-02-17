@@ -20,8 +20,7 @@ func ShowConfig(cfg *config.Config) {
 		tag = "latest"
 	}
 
-	m := fmt.Sprintf(`
- Project Name      : %s
+	m := fmt.Sprintf(` Project Name      : %s
  Project Namespace : %s
  Base Repository   : %s
  Base Repo Version : %s`, cfg.Project.Name, cfg.Project.Namespace, cfg.Base.Repo, tag)

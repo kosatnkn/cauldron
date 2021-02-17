@@ -17,7 +17,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 	log.Info("Configuring")
 
-	module := getModule(cfg.Namespace, simpleName)
+	module := getModule(cfg.Project.Namespace, simpleName)
 	var err error
 
 	for k, file := range files {
@@ -30,7 +30,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 		// rewrite splash message
 		if fileName == "styles.go" {
-			err = rewriteSplash(file, cfg.Name, cfg.SplashStyle)
+			err = rewriteSplash(file, cfg.Project.Name, cfg.Project.SplashStyle)
 			if err != nil {
 				return err
 			}
@@ -38,7 +38,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 		// rewrite readme
 		if fileName == "README.md" && isBaseReadme(file, simpleName) {
-			err = rewriteReadme(file, cfg.Name)
+			err = rewriteReadme(file, cfg.Project.Name)
 			if err != nil {
 				return err
 			}

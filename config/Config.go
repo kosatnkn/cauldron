@@ -14,8 +14,9 @@ type Cauldron struct {
 
 // Project holds new project configurations.
 type Project struct {
-	Name      string
-	Namespace string
+	Name        string
+	Namespace   string
+	SplashStyle string
 }
 
 // Base holds configurations of the base project

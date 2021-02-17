@@ -11,7 +11,10 @@ func main() {
 	// init config
 	cfg := &config.Config{
 		Cauldron: config.Cauldron{
-			Version: "v1.3.0",
+			Version: "v1.4.0",
+		},
+		Project: config.Project{
+			SplashStyle: "small",
 		},
 		Base: config.Base{
 			Repo:       "https://github.com/kosatnkn/catalyst.git",
