@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/kosatnkn/cauldron/config"
@@ -67,36 +66,12 @@ func createBase(dir string, cfg *config.Config) error {
 		return err
 	}
 
-	// checkout tag
-	tag := cfg.Base.Version
-	if tag == "" {
-		tag = cfg.Base.MaxVersion
-	}
-	if !isVersionInRange(tag, cfg.Base.MinVersion, cfg.Base.MaxVersion) {
-		return fmt.Errorf(`Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'`,
-			cfg.Cauldron.Version,
-			cfg.Base.MinVersion,
-			cfg.Base.MaxVersion,
-			cfg.Base.Repo,
-			tag)
-	}
-
-	err = repository.Checkout(r, tag)
+	err = repository.Checkout(r, cfg.Base.Version)
 	if err != nil {
 		return err
 	}
 
 	return nil
-}
-
-// isVersionInRange checks whether the provided version is in the supported version range.
-func isVersionInRange(version, min, max string) bool {
-
-	v, _ := strconv.Atoi(strings.Join(strings.Split(version[1:], "."), ""))
-	mn, _ := strconv.Atoi(strings.Join(strings.Split(min[1:], "."), ""))
-	mx, _ := strconv.Atoi(strings.Join(strings.Split(max[1:], "."), ""))
-
-	return v >= mn && v <= mx
 }
 
 // getProjectDir gives the directory path to create the repository.

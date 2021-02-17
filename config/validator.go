@@ -2,7 +2,10 @@ package config
 
 import (
 	"errors"
+	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 
 	e "github.com/kosatnkn/cauldron/errors"
 )
@@ -21,6 +24,19 @@ func Validate(cfg *Config) {
 	if err != nil {
 		e.Handle(err)
 	}
+
+	// checkout tag
+	if !isVersionInRange(cfg.Base.Version, cfg.Base.MinVersion, cfg.Base.MaxVersion) {
+		err = fmt.Errorf(`Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'`,
+			cfg.Cauldron.Version,
+			cfg.Base.MinVersion,
+			cfg.Base.MaxVersion,
+			cfg.Base.Repo,
+			cfg.Base.Version)
+
+		e.Handle(err)
+	}
+
 }
 
 // isNameValid checks whether name is valid.
@@ -47,4 +63,18 @@ func isNameSpaceValid(namespace string) error {
 	}
 
 	return nil
+}
+
+// isVersionInRange checks whether the provided version is in the supported version range.
+func isVersionInRange(version, min, max string) bool {
+
+	if version == "" {
+		return true
+	}
+
+	v, _ := strconv.Atoi(strings.Join(strings.Split(version[1:], "."), ""))
+	mn, _ := strconv.Atoi(strings.Join(strings.Split(min[1:], "."), ""))
+	mx, _ := strconv.Atoi(strings.Join(strings.Split(max[1:], "."), ""))
+
+	return v >= mn && v <= mx
 }
