@@ -73,7 +73,12 @@ func createBase(dir string, cfg *config.Config) error {
 		tag = cfg.Base.MaxVersion
 	}
 	if !isVersionInRange(tag, cfg.Base.MinVersion, cfg.Base.MaxVersion) {
-		return fmt.Errorf(`Creating a new project using '%s' of '%s' is not supported by Cauldron '%s'`, tag, cfg.Base.Repo, cfg.Cauldron.Version)
+		return fmt.Errorf(`Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'`,
+			cfg.Cauldron.Version,
+			cfg.Base.MinVersion,
+			cfg.Base.MaxVersion,
+			cfg.Base.Repo,
+			tag)
 	}
 
 	err = repository.Checkout(r, tag)
