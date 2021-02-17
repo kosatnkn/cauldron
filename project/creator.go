@@ -66,7 +66,7 @@ func createBase(dir string, cfg *config.Config) error {
 		return err
 	}
 
-	err = repository.Checkout(r, cfg.Base.Version)
+	err = repository.Checkout(r, cfg.Base.Version, cfg.Base.MaxVersion)
 	if err != nil {
 		return err
 	}

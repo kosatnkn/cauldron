@@ -68,7 +68,7 @@ func isNameSpaceValid(namespace string) error {
 // isVersionInRange checks whether the provided version is in the supported version range.
 func isVersionInRange(version, min, max string) bool {
 
-	if version == "" {
+	if version == "" && max == "" {
 		return true
 	}
 
