@@ -7,19 +7,8 @@ import (
 	"github.com/kosatnkn/cauldron/log"
 )
 
-// directories to be removed
-var dirs = []string{
-	".git",
-	".github",
-}
-
-// files to be removed
-var files = []string{
-	"doc.go",
-}
-
 // clean cleans the project directory.
-func clean(baseDir string) error {
+func clean(baseDir string, dirs, files []string) error {
 
 	log.Info("Cleaning")
 

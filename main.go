@@ -21,6 +21,13 @@ func main() {
 			Module:     "github.com/kosatnkn/catalyst",
 			MinVersion: "v1.0.0",
 			MaxVersion: "v2.3.0",
+			RemoveDirs: []string{
+				".git",
+				".github",
+			},
+			RemoveFiles: []string{
+				"doc.go",
+			},
 		},
 	}
 

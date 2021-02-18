@@ -30,7 +30,7 @@ func Create(cfg *config.Config) {
 	}
 
 	// clean base
-	err = clean(dir)
+	err = clean(dir, cfg.Base.RemoveDirs, cfg.Base.RemoveFiles)
 	if err != nil {
 		errors.Handle(err)
 	}
