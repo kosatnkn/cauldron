@@ -12,12 +12,13 @@ func ShowConfig(cfg *config.Config) {
 
 	log.Info("Project Configurations")
 
-	var tag string
-	if cfg.Base.Version != "" {
-		tag = cfg.Base.MaxVersion
-	}
+	tag := cfg.Base.Version
 	if tag == "" {
-		tag = "latest"
+		if cfg.Base.MaxVersion == "" {
+			tag = "latest"
+		} else {
+			tag = cfg.Base.MaxVersion
+		}
 	}
 
 	m := fmt.Sprintf(` Project Name      : %s

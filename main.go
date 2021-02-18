@@ -26,6 +26,7 @@ func main() {
 				".github",
 			},
 			RemoveFiles: []string{
+				".travis.yml",
 				"doc.go",
 			},
 		},

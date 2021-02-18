@@ -51,6 +51,12 @@ func deleteFiles(baseDir string, files []string) error {
 
 	for _, file := range files {
 
+		info, _ := os.Stat(baseDir + file)
+		if info == nil {
+			log.Warn(fmt.Sprintf(" No file %s: %s%s", file, baseDir, file))
+			continue
+		}
+
 		err := os.Remove(baseDir + file)
 		if err != nil {
 			return err
