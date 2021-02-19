@@ -10,14 +10,12 @@ import (
 	"github.com/kosatnkn/cauldron/log"
 )
 
-var currentModule = "github.com/kosatnkn/catalyst"
-
 // configure configures the project.
 func configure(cfg *config.Config, simpleName string, files map[string]string) error {
 
 	log.Info("Configuring")
 
-	module := getModule(cfg.Namespace, simpleName)
+	newModule := getModule(cfg.Project.Namespace, simpleName)
 	var err error
 
 	for k, file := range files {
@@ -30,7 +28,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 		// rewrite splash message
 		if fileName == "styles.go" {
-			err = rewriteSplash(file, cfg.Name, cfg.SplashStyle)
+			err = rewriteSplash(file, cfg.Project.Name, cfg.Project.SplashStyle)
 			if err != nil {
 				return err
 			}
@@ -38,14 +36,14 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 		// rewrite readme
 		if fileName == "README.md" && isBaseReadme(file, simpleName) {
-			err = rewriteReadme(file, cfg.Name)
+			err = rewriteReadme(file, cfg.Project.Name)
 			if err != nil {
 				return err
 			}
 		}
 
 		// rewrite import paths
-		err = rewriteImportPaths(file, module)
+		err = rewriteImportPaths(file, cfg.Base.Module, newModule)
 		if err != nil {
 			return err
 		}
@@ -67,12 +65,12 @@ func isBaseReadme(file string, simpleName string) bool {
 
 // rewriteImportPaths replaces the old module name in the
 // import path with the new module name.
-func rewriteImportPaths(file string, module string) error {
+func rewriteImportPaths(file, currentModule, newModule string) error {
 
 	m := fmt.Sprintf(" Configured %s", file)
 	log.Default(m)
 
-	return replaceContent(file, currentModule, module)
+	return replaceContent(file, currentModule, newModule)
 }
 
 // rewriteSplash creates a new splash for the project using the project name.

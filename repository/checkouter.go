@@ -11,10 +11,15 @@ import (
 )
 
 // Checkout checks out the given tag or the latest tag when a tag is not given.
-func Checkout(r *git.Repository, tag string) error {
+func Checkout(r *git.Repository, tag, maxTag string) error {
 
 	if tag == "" {
-		return checkoutLatestTag(r)
+
+		if maxTag == "" {
+			return checkoutLatestTag(r)
+		}
+
+		return checkoutTag(r, maxTag)
 	}
 
 	return checkoutTag(r, tag)

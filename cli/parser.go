@@ -10,21 +10,21 @@ import (
 func ParseFlags(cfg *config.Config) {
 
 	// read input from stdin
-	flag.StringVar(&cfg.Name,
+	flag.StringVar(&cfg.Project.Name,
 		"n",
 		"",
 		"Name for the new project.")
 
-	flag.StringVar(&cfg.Namespace,
+	flag.StringVar(&cfg.Project.Namespace,
 		"ns",
 		"",
 		"Namespace for the new project.")
 
-	flag.StringVar(&cfg.Tag,
+	flag.StringVar(&cfg.Base.Version,
 		"t",
 		"",
-		"Release tag of the base project that is going to be used to create the new project."+
-			"\nWhen a tag is not defined the latest tag will be used")
+		`Release tag of the base project that is going to be used to create the new project.
+When a tag is not defined the latest tag will be used`)
 
 	flag.Parse()
 }

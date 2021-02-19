@@ -12,10 +12,10 @@ import (
 	"github.com/kosatnkn/cauldron/repository"
 )
 
-// Create creates a new project using `Catalyst` as the base.
+// Create creates a new project using the base project.
 func Create(cfg *config.Config) {
 
-	simpleName := simplifyName(cfg.Name)
+	simpleName := simplifyName(cfg.Project.Name)
 
 	// get project dir
 	dir, err := getProjectDir(simpleName)
@@ -30,7 +30,7 @@ func Create(cfg *config.Config) {
 	}
 
 	// clean base
-	err = clean(dir)
+	err = clean(dir, cfg.Base.RemoveDirs, cfg.Base.RemoveFiles)
 	if err != nil {
 		errors.Handle(err)
 	}
@@ -54,20 +54,19 @@ func Create(cfg *config.Config) {
 	}
 }
 
-// createBase creates the project base by cloning `Catalyst`
+// createBase creates the project base by cloning the base repository.
 func createBase(dir string, cfg *config.Config) error {
 
 	m := fmt.Sprintf("Project is created in %s", dir)
 	log.Note(m)
 
 	// clone
-	r, err := repository.Clone(dir, cfg.Repo)
+	r, err := repository.Clone(dir, cfg.Base.Repo)
 	if err != nil {
 		return err
 	}
 
-	// checkout tag
-	err = repository.Checkout(r, cfg.Tag)
+	err = repository.Checkout(r, cfg.Base.Version, cfg.Base.MaxVersion)
 	if err != nil {
 		return err
 	}

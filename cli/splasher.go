@@ -12,15 +12,12 @@ import (
 func ShowSplash(cfg *config.Config) {
 
 	splash := `
-  ___|             |     |                
- |      _' | |   | |  _' |  __| _ \  __ \ 
- |     (   | |   | | (   | |   (   | |   |
-\____|\__,_|\__,_|_|\__,_|_|  \___/ _|  _|`
-
-	caption := `Project generator using 'Catalyst' as a base`
+  ___           _    _              
+ / __|__ _ _  _| |__| |_ _ ___ _ _  
+| (__/ _' | || | / _' | '_/ _ \ ' \ 
+ \___\__,_|\_,_|_\__,_|_| \___/_||_|`
 
 	log.Default(splash)
-	log.Default(cfg.Version + "\n")
-	log.Default(caption)
+	log.Default("  " + cfg.Cauldron.Version)
 	log.Default("")
 }

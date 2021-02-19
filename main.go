@@ -10,14 +10,26 @@ func main() {
 
 	// init config
 	cfg := &config.Config{
-		Name:        "",       // Sample
-		Namespace:   "",       // example.com/example
-		Tag:         "",       // v1.0.0
-		SplashStyle: "shadow", // shadow
-		Repo:        "https://github.com/kosatnkn/catalyst.git",
-
-		// Version number of Cauldron
-		Version: "v1.3.0",
+		Cauldron: config.Cauldron{
+			Version: "v1.4.0",
+		},
+		Project: config.Project{
+			SplashStyle: "small",
+		},
+		Base: config.Base{
+			Repo:       "https://github.com/kosatnkn/catalyst.git",
+			Module:     "github.com/kosatnkn/catalyst",
+			MinVersion: "v1.0.0",
+			MaxVersion: "v2.3.0",
+			RemoveDirs: []string{
+				".git",
+				".github",
+			},
+			RemoveFiles: []string{
+				".travis.yml",
+				"doc.go",
+			},
+		},
 	}
 
 	cli.ParseFlags(cfg)

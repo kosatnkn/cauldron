@@ -7,19 +7,8 @@ import (
 	"github.com/kosatnkn/cauldron/log"
 )
 
-// directories to be removed
-var dirs = []string{
-	".git",
-	".github",
-}
-
-// files to be removed
-var files = []string{
-	"doc.go",
-}
-
 // clean cleans the project directory.
-func clean(baseDir string) error {
+func clean(baseDir string, dirs, files []string) error {
 
 	log.Info("Cleaning")
 
@@ -61,6 +50,12 @@ func deleteDirs(baseDir string, dirs []string) error {
 func deleteFiles(baseDir string, files []string) error {
 
 	for _, file := range files {
+
+		info, _ := os.Stat(baseDir + file)
+		if info == nil {
+			log.Warn(fmt.Sprintf(" No file %s: %s%s", file, baseDir, file))
+			continue
+		}
 
 		err := os.Remove(baseDir + file)
 		if err != nil {
