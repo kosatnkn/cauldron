@@ -25,7 +25,7 @@ func Validate(cfg *Config) {
 		e.Handle(err)
 	}
 
-	err = checkValidSymanticTag(cfg.Base.Version)
+	err = checkValidSemanticTag(cfg.Base.Version)
 	if err != nil {
 		e.Handle(err)
 	}
@@ -62,8 +62,8 @@ func checkNameSpaceValid(namespace string) error {
 	return nil
 }
 
-// checkValidSymanticTag checks whether the provided tag is a valid symantic tag
-func checkValidSymanticTag(tag string) error {
+// checkValidSemanticTag checks whether the provided tag is a valid semantic tag
+func checkValidSemanticTag(tag string) error {
 
 	if tag == "" {
 		return nil
@@ -72,7 +72,7 @@ func checkValidSymanticTag(tag string) error {
 	exp := `^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)`
 
 	if !regexp.MustCompile(exp).MatchString(tag) {
-		return fmt.Errorf(`'%s' is not a valid symantic tag`, tag)
+		return fmt.Errorf(`'%s' is not a valid semantic tag`, tag)
 	}
 
 	return nil
