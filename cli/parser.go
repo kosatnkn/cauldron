@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"flag"
+	"github.com/spf13/pflag"
 
 	"github.com/kosatnkn/cauldron/config"
 )
@@ -10,21 +10,32 @@ import (
 func ParseFlags(cfg *config.Config) {
 
 	// read input from stdin
-	flag.StringVar(&cfg.Project.Name,
+	pflag.StringVarP(&cfg.Project.Name,
+		"name",
 		"n",
 		"",
-		"Name for the new project.")
+		`Name for the new project
+Only alpha-numeric characters dash(-) and underscore(_) are allowed. Any other character will be removed.
+e.g.: Sample
+`)
 
-	flag.StringVar(&cfg.Project.Namespace,
-		"ns",
+	pflag.StringVarP(&cfg.Project.Namespace,
+		"namespace",
+		"s",
 		"",
-		"Namespace for the new project.")
+		`Namespace for the new project
+Only alpha-numeric characters dash(-), underscore(_) and slash(/) are allowed. Any other character will be removed.
+e.g.: github.com/username
+`)
 
-	flag.StringVar(&cfg.Base.Version,
+	pflag.StringVarP(&cfg.Base.Version,
+		"tag",
 		"t",
 		"",
-		`Release tag of the base project that is going to be used to create the new project.
-When a tag is not defined the latest tag will be used`)
+		`Release version of the base project to be used (Optional)
+When a tag is not defined the latest tag will be used.
+e.g.: v1.0.0
+`)
 
-	flag.Parse()
+	pflag.Parse()
 }
