@@ -21,10 +21,9 @@ func ShowConfig(cfg *config.Config) {
 		}
 	}
 
-	m := fmt.Sprintf(` Project Name      : %s
- Project Namespace : %s
- Base Repository   : %s
- Base Repo Version : %s`, cfg.Project.Name, cfg.Project.Namespace, cfg.Base.Repo, tag)
+	m := fmt.Sprintf(` Name      : %s
+ Namespace : %s
+ Based on  : %s (%s)`, cfg.Project.Name, cfg.Project.Namespace, cfg.Base.Repo, tag)
 
 	log.Default(m)
 }
