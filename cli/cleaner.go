@@ -1,7 +1,8 @@
 package cli
 
 import (
-	"strings"
+	"fmt"
+	"regexp"
 
 	"github.com/kosatnkn/cauldron/config"
 )
@@ -14,10 +15,13 @@ func CleanConfig(cfg *config.Config) {
 }
 
 // clean cleans the input value.
-func cleanString(value string) string {
+func cleanString(v string) string {
 
-	// remove spaces
-	value = strings.Replace(value, " ", "", -1)
+	exp := "[^a-zA-Z0-9/_-]+"
+	reg, err := regexp.Compile(exp)
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	return value
+	return reg.ReplaceAllString(v, "")
 }
