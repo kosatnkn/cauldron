@@ -15,7 +15,7 @@ func ParseFlags(cfg *config.Config) {
 		"n",
 		"",
 		`Name for the new project
-Only alpha-numeric characters dash(-) and underscore(_) are allowed. Any other character will be removed.
+Only alpha-numeric characters dash(-) underscore(_) and slash(/) are allowed. Any other character will be removed.
 e.g.: Sample
 `)
 
