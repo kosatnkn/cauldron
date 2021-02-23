@@ -22,7 +22,7 @@ Usage:
   cauldron -n Sample -s github.com/username [-t v1.0.0]
   cauldron --name Sample --namespace github.com/username [--tag v1.0.0]
 
-This will create the new project with the module in go.mod
+  This will create a new project with go.mod module
   github.com/username/sample`
 
 	log.Default(splash)
