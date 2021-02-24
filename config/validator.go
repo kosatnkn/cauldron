@@ -93,10 +93,11 @@ func checkVersionInRange(cfg *Config) error {
 		return nil
 	}
 
-	return fmt.Errorf(`Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'`,
-		cfg.Cauldron.Version,
-		cfg.Base.MinVersion,
-		cfg.Base.MaxVersion,
-		cfg.Base.Repo,
-		cfg.Base.Version)
+	// Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'
+	// cfg.Cauldron.Version,
+	// cfg.Base.MinVersion,
+	// cfg.Base.MaxVersion,
+	// cfg.Base.Repo,
+	// cfg.Base.Version
+	return fmt.Errorf("Version out of range")
 }
