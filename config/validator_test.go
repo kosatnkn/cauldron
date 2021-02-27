@@ -157,6 +157,12 @@ func TestCheckVersionInRange(t *testing.T) {
 		{"one major version up", Config{Base: Base{Version: "v2.2.0", MinVersion: "v1.0.0", MaxVersion: "v2.5.0"}}},
 		{"one minor version up", Config{Base: Base{Version: "v1.1.0", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
 		{"one bug version up", Config{Base: Base{Version: "v1.1.1", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
+		{"non existant version in range", Config{Base: Base{Version: "v1.1.1", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
+		{"large major version", Config{Base: Base{Version: "v10.1.1", MinVersion: "v1.0.0", MaxVersion: "v10.5.0"}}},
+		{"large minor version", Config{Base: Base{Version: "v1.15.1", MinVersion: "v1.0.0", MaxVersion: "v2.5.0"}}},
+		{"large bug version", Config{Base: Base{Version: "v1.1.32", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
+		{"symantic version major only form", Config{Base: Base{Version: "v1", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
+		{"symantic version major and minor only form", Config{Base: Base{Version: "v1.2", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
 	}
 	for _, test := range tests {
 
@@ -176,8 +182,6 @@ func TestCheckVersionInRangeFail(t *testing.T) {
 		name  string
 		input Config
 	}{
-		{"symantic version major only form", Config{Base: Base{Version: "v1", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
-		{"symantic version major and minor only form", Config{Base: Base{Version: "v1.2", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
 		{"less than min version", Config{Base: Base{Version: "v1.0.0", MinVersion: "v1.2.3", MaxVersion: "v1.5.0"}}},
 		{"greater than max version", Config{Base: Base{Version: "v1.6.7", MinVersion: "v1.0.0", MaxVersion: "v1.5.0"}}},
 	}
@@ -191,7 +195,7 @@ func TestCheckVersionInRangeFail(t *testing.T) {
 			}
 
 			if err.Error() != "Version out of range" {
-				t.Errorf(`Need '%s', got '%s'`, "Version out of range", err.Error())
+				t.Errorf(`Need '%s', got '%s'`, "", err.Error())
 			}
 		})
 	}

@@ -4,9 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"regexp"
-	"strconv"
-	"strings"
 
+	"github.com/Masterminds/semver/v3"
 	e "github.com/kosatnkn/cauldron/errors"
 )
 
@@ -85,19 +84,22 @@ func checkVersionInRange(cfg *Config) error {
 		return nil
 	}
 
-	v, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.Version[1:], "."), ""))
-	min, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MinVersion[1:], "."), ""))
-	max, _ := strconv.Atoi(strings.Join(strings.Split(cfg.Base.MaxVersion[1:], "."), ""))
-
-	if v >= min && v <= max {
-		return nil
+	v, err := semver.NewVersion(cfg.Base.Version)
+	if err != nil {
+		return err
 	}
 
-	// Cauldron(%s) supports '%s' to '%s' of '%s', cannot create project using '%s'
-	// cfg.Cauldron.Version,
-	// cfg.Base.MinVersion,
-	// cfg.Base.MaxVersion,
-	// cfg.Base.Repo,
-	// cfg.Base.Version
-	return fmt.Errorf("Version out of range")
+	min := cfg.Base.MinVersion[1:]
+	max := cfg.Base.MaxVersion[1:]
+	c, err := semver.NewConstraint(fmt.Sprintf(">=%s, <=%s", min, max))
+	if err != nil {
+		return err
+	}
+
+	ok, _ := c.Validate(v)
+	if !ok {
+		return fmt.Errorf("Version out of range")
+	}
+
+	return nil
 }
