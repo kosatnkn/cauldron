@@ -1,74 +1,69 @@
 package log
 
 import (
-	"fmt"
-
-	"github.com/logrusorgru/aurora"
+	"github.com/gookit/color"
 )
 
 // Error logs a message as of error type.
-func Error(message string) {
-	log("ERROR", message)
+func Error(msg string) {
+	log("ERROR", msg)
 }
 
 // Debug logs a message as of debug type.
-func Debug(message string) {
-	log("DEBUG", message)
+func Debug(msg string) {
+	log("DEBUG", msg)
 }
 
 // Info logs a message as of information type.
-func Info(message string) {
-	log("INFO", message)
+func Info(msg string) {
+	log("INFO", msg)
 }
 
 // Warn logs a message as of warning type.
-func Warn(message string) {
-	log("WARN", message)
+func Warn(msg string) {
+	log("WARN", msg)
 }
 
 // Theme logs a message as of theme type.
-func Theme(message string) {
-	log("THEME", message)
+func Theme(msg string) {
+	log("THEME", msg)
 }
 
 // Note logs a message as of notification type.
-func Note(message string) {
-	log("NOTE", message)
+func Note(msg string) {
+	log("NOTE", msg)
 }
 
 // Default logs a message as of default type.
-func Default(message string) {
-	log("", message)
+func Default(msg string) {
+	log("", msg)
 }
 
 // log logs a message with colour.
 func log(level string, message string) {
 
-	var av aurora.Value
-
 	switch level {
 	case "ERROR":
-		av = aurora.Red(message)
+		// color.Error.Prompt(message)
+		color.New(color.FgRed, color.OpBold).Println("ERROR: " + message)
 		break
 	case "DEBUG":
-		av = aurora.Green(message)
+		color.Debug.Println(message)
 		break
 	case "INFO":
-		av = aurora.Cyan(message)
+		color.Info.Println(message)
 		break
 	case "WARN":
-		av = aurora.Yellow(message)
+		color.Warn.Println(message)
 		break
 	case "THEME":
-		av = aurora.Blue(message)
+		color.Note.Println(message)
 		break
 	case "NOTE":
-		av = aurora.BrightGreen(message)
+		color.Note.Println(message)
 		break
 	default:
-		av = aurora.White(message)
+		color.Println(message)
 		break
 	}
-
-	fmt.Println(av)
 }

@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/google/go-cmp v0.5.2 // indirect
+	github.com/gookit/color v1.3.7
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible
