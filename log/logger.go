@@ -44,7 +44,6 @@ func log(level string, message string) {
 
 	switch level {
 	case "ERROR":
-		// color.Error.Prompt(message)
 		color.New(color.FgRed, color.OpBold).Println("ERROR: " + message)
 		break
 	case "DEBUG":
