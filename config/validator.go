@@ -91,16 +91,13 @@ func checkVersionInRange(cfg *Config) error {
 
 	var c *semver.Constraints
 
-	min := cfg.Base.MinVersion
-	max := cfg.Base.MaxVersion
-
-	if max == "" {
-		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <%s", min, cfg.Base.NextMajorVersion))
+	if cfg.Base.MaxVersion == "" {
+		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <%s", cfg.Base.MinVersion, cfg.Base.NextMajorVersion))
 		if err != nil {
 			return err
 		}
 	} else {
-		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <=%s", min, max))
+		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <=%s", cfg.Base.MinVersion, cfg.Base.MaxVersion))
 		if err != nil {
 			return err
 		}
