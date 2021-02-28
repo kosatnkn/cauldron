@@ -17,16 +17,16 @@ func main() {
 			SplashStyle: "small",
 		},
 		Base: config.Base{
-			Repo:       "https://github.com/kosatnkn/catalyst.git",
-			Module:     "github.com/kosatnkn/catalyst",
-			MinVersion: "v2.4.0",
-			MaxVersion: "",
+			Repo:             "https://github.com/kosatnkn/catalyst.git",
+			Module:           "github.com/kosatnkn/catalyst/v2",
+			MinVersion:       "v2.4.0",
+			MaxVersion:       "",
+			NextMajorVersion: "v3.0.0",
 			RemoveDirs: []string{
 				".git",
 				".github",
 			},
 			RemoveFiles: []string{
-				".travis.yml",
 				"doc.go",
 			},
 		},
