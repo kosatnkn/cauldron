@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/log"
 )
 
 // considered file signatures for indexing.

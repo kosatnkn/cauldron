@@ -1,4 +1,4 @@
-module github.com/kosatnkn/cauldron
+module github.com/kosatnkn/cauldron/v2
 
 go 1.15
 

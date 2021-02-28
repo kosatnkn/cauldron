@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/kosatnkn/cauldron/cli"
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/project"
+	"github.com/kosatnkn/cauldron/v2/cli"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/project"
 )
 
 func main() {
@@ -11,7 +11,7 @@ func main() {
 	// init config
 	cfg := &config.Config{
 		Cauldron: config.Cauldron{
-			Version: "v1.4.1",
+			Version: "v2.0.0",
 		},
 		Project: config.Project{
 			SplashStyle: "small",

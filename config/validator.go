@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/Masterminds/semver/v3"
-	e "github.com/kosatnkn/cauldron/errors"
+	e "github.com/kosatnkn/cauldron/v2/errors"
 )
 
 // Validate validates the populated config struct.

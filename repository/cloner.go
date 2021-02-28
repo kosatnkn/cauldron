@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/log"
 	"gopkg.in/src-d/go-git.v4"
 )
 

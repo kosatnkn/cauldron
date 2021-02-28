@@ -19,7 +19,7 @@ Visit the [Catalyst](https://github.com/kosatnkn/catalyst) base project for more
 ## Installation
 
 ```bash
-go get github.com/kosatnkn/cauldron
+go get github.com/kosatnkn/cauldron/v2
 ```
 
 ## Usage

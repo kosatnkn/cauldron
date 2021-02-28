@@ -3,7 +3,7 @@ package cli
 import (
 	"github.com/spf13/pflag"
 
-	"github.com/kosatnkn/cauldron/config"
+	"github.com/kosatnkn/cauldron/v2/config"
 )
 
 // ParseFlags parses input flags and populates the config object.

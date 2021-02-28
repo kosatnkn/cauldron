@@ -3,7 +3,7 @@ package errors
 import (
 	"os"
 
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/log"
 )
 
 // Handle gracefully handles an error.

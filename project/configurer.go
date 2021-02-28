@@ -5,9 +5,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/content"
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/content"
+	"github.com/kosatnkn/cauldron/v2/log"
 )
 
 // configure configures the project.

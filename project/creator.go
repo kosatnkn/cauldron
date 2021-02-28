@@ -6,10 +6,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/errors"
-	"github.com/kosatnkn/cauldron/log"
-	"github.com/kosatnkn/cauldron/repository"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/errors"
+	"github.com/kosatnkn/cauldron/v2/log"
+	"github.com/kosatnkn/cauldron/v2/repository"
 )
 
 // Create creates a new project using the base project.

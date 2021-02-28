@@ -1,8 +1,8 @@
 package cli
 
 import (
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/log"
 )
 
 // ShowSplash shows a splash message.

@@ -3,8 +3,8 @@ package cli
 import (
 	"fmt"
 
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/log"
 )
 
 // ShowConfig prints config values to the cli.
