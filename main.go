@@ -19,8 +19,8 @@ func main() {
 		Base: config.Base{
 			Repo:       "https://github.com/kosatnkn/catalyst.git",
 			Module:     "github.com/kosatnkn/catalyst",
-			MinVersion: "v1.0.0",
-			MaxVersion: "v2.3.0",
+			MinVersion: "v2.4.0",
+			MaxVersion: "",
 			RemoveDirs: []string{
 				".git",
 				".github",
