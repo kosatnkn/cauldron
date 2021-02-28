@@ -53,7 +53,7 @@ func deleteFiles(baseDir string, files []string) error {
 
 		info, _ := os.Stat(baseDir + file)
 		if info == nil {
-			log.Warn(fmt.Sprintf(" No file %s: %s%s", file, baseDir, file))
+			log.Warn(fmt.Sprintf(" Missing %s: %s%s", file, baseDir, file))
 			continue
 		}
 

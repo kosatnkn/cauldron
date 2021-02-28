@@ -23,7 +23,8 @@ func ShowConfig(cfg *config.Config) {
 
 	m := fmt.Sprintf(` Name      : %s
  Namespace : %s
- Based on  : %s (%s)`, cfg.Project.Name, cfg.Project.Namespace, cfg.Base.Repo, tag)
+ Based on  : %s (%s)
+ `, cfg.Project.Name, cfg.Project.Namespace, cfg.Base.Repo, tag)
 
 	log.Default(m)
 }
