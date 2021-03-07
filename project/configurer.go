@@ -54,7 +54,7 @@ func configure(cfg *config.Config, simpleName string, files map[string]string) e
 
 // isBaseReadme checks whether the given readme file is the main readme
 // file at the base of the project.
-func isBaseReadme(file string, simpleName string) bool {
+func isBaseReadme(file, simpleName string) bool {
 
 	parts := strings.Split(file, string(os.PathSeparator))
 
@@ -74,7 +74,7 @@ func rewriteImportPaths(file, currentModule, newModule string) error {
 }
 
 // rewriteSplash creates a new splash for the project using the project name.
-func rewriteSplash(file string, name string, style string) error {
+func rewriteSplash(file, name, style string) error {
 
 	splash := []byte(content.GenerateSplashStyle(name, style))
 

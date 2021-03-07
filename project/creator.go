@@ -90,19 +90,19 @@ func getProjectDir(name string) (string, error) {
 }
 
 // getModule returns the module name using module prefix and project name.
-func getModule(modulePrefix string, name string) string {
+func getModule(prefix, name string) string {
 
 	// remove all tailing slashes from module prefix
 	for {
 
-		if modulePrefix[len(modulePrefix)-1:] != "/" {
+		if prefix[len(prefix)-1:] != "/" {
 			break
 		}
 
-		modulePrefix = modulePrefix[0 : len(modulePrefix)-1]
+		prefix = prefix[0 : len(prefix)-1]
 	}
 
-	return fmt.Sprintf("%s/%s", modulePrefix, name)
+	return fmt.Sprintf("%s/%s", prefix, name)
 }
 
 // simplifyName removes all illegal characters and lowercase the name.

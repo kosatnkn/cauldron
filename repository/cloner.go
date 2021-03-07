@@ -9,7 +9,7 @@ import (
 )
 
 // Clone clones `Catalyst` to the given directory.
-func Clone(dir string, url string) (*git.Repository, error) {
+func Clone(dir, url string) (*git.Repository, error) {
 
 	m := fmt.Sprintf("Cloning %s", url)
 	log.Info(m)

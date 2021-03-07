@@ -40,29 +40,29 @@ func Default(msg string) {
 }
 
 // log logs a message with colour.
-func log(level string, message string) {
+func log(level, msg string) {
 
 	switch level {
 	case "ERROR":
-		color.New(color.FgRed, color.OpBold).Println("ERROR: " + message)
+		color.New(color.FgRed, color.OpBold).Println("ERROR: " + msg)
 		break
 	case "DEBUG":
-		color.Debug.Println(message)
+		color.Debug.Println(msg)
 		break
 	case "INFO":
-		color.Info.Println(message)
+		color.Info.Println(msg)
 		break
 	case "WARN":
-		color.Warn.Println(message)
+		color.Warn.Println(msg)
 		break
 	case "THEME":
-		color.Note.Println(message)
+		color.Note.Println(msg)
 		break
 	case "NOTE":
-		color.Note.Println(message)
+		color.Note.Println(msg)
 		break
 	default:
-		color.Println(message)
+		color.Println(msg)
 		break
 	}
 }

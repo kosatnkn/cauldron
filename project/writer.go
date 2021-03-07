@@ -6,7 +6,7 @@ import (
 )
 
 // replaceContent replaces matching strings in file with the given string.
-func replaceContent(file string, phrase string, replacement string) error {
+func replaceContent(file, phrase, replacement string) error {
 
 	current, err := ioutil.ReadFile(file)
 	if err != nil {
