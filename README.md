@@ -16,8 +16,19 @@ The project that will be created uses `go.mod` for dependency management. This w
 
 Visit the [Catalyst](https://github.com/kosatnkn/catalyst) base project for more information.
 
+## Version 1 vs Version 2
+Version 1 of `Cauldron` supports creating projects using `Catalyst` versions `v1.0.0` to `v2.3.x`.
+
+Version 2 of `Cauldron` supports creating projects using `Catalyst` version `v2.4.0` and upwards.
+
 ## Installation
 
+**Version 1**
+```bash
+go get github.com/kosatnkn/cauldron
+```
+
+**Version 2**
 ```bash
 go get github.com/kosatnkn/cauldron/v2
 ```
@@ -38,7 +49,7 @@ cauldron --name Sample --namespace github.com/username [--tag v1.0.0]
 - `-t --tag` Release version of `Catalyst` to be used. The latest version will be used if `-t` is not provided
 - `-h --help` Show help message
 
-This will create a new project with go.mod module path of `github.com/username/sample`
+This will create a new project with **go.mod** module path of `github.com/username/sample`
 
 Cauldron will do a `git init` on the newly created project but you will have to stage all the files in the project and do the first commit yourself.
 ```bash
@@ -46,8 +57,3 @@ git add .
 
 git commit -m "first commit"
 ```
-
-
-## Using Go mod
-
-Go mod is used as the dependency management mechanism. Visit [here](https://github.com/golang/go/wiki/Modules) for more details.
