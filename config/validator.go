@@ -103,9 +103,9 @@ func checkVersionInRange(cfg *Config) error {
 		}
 	}
 
-	ok, _ := c.Validate(v)
+	ok, errs := c.Validate(v)
 	if !ok {
-		return fmt.Errorf("Version out of range")
+		return fmt.Errorf("Version out of range, %s", errs[0].Error())
 	}
 
 	return nil
