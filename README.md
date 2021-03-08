@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/kosatnkn/cauldron/badge.svg?branch=master)](https://coveralls.io/github/kosatnkn/cauldron?branch=master)
 ![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kosatnkn/cauldron/v2.svg)](https://pkg.go.dev/github.com/kosatnkn/cauldron/v2)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kosatnkn/cauldron)](https://goreportcard.com/report/github.com/kosatnkn/cauldron)
 
 Project generator using [Catalyst](https://github.com/kosatnkn/catalyst) as a template.
