@@ -6,10 +6,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/errors"
-	"github.com/kosatnkn/cauldron/log"
-	"github.com/kosatnkn/cauldron/repository"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/errors"
+	"github.com/kosatnkn/cauldron/v2/log"
+	"github.com/kosatnkn/cauldron/v2/repository"
 )
 
 // Create creates a new project using the base project.
@@ -90,19 +90,19 @@ func getProjectDir(name string) (string, error) {
 }
 
 // getModule returns the module name using module prefix and project name.
-func getModule(modulePrefix string, name string) string {
+func getModule(prefix, name string) string {
 
 	// remove all tailing slashes from module prefix
 	for {
 
-		if modulePrefix[len(modulePrefix)-1:] != "/" {
+		if prefix[len(prefix)-1:] != "/" {
 			break
 		}
 
-		modulePrefix = modulePrefix[0 : len(modulePrefix)-1]
+		prefix = prefix[0 : len(prefix)-1]
 	}
 
-	return fmt.Sprintf("%s/%s", modulePrefix, name)
+	return fmt.Sprintf("%s/%s", prefix, name)
 }
 
 // simplifyName removes all illegal characters and lowercase the name.

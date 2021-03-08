@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kosatnkn/cauldron/log"
+	"github.com/kosatnkn/cauldron/v2/log"
 	"gopkg.in/src-d/go-git.v4"
 )
 
 // Clone clones `Catalyst` to the given directory.
-func Clone(dir string, url string) (*git.Repository, error) {
+func Clone(dir, url string) (*git.Repository, error) {
 
 	m := fmt.Sprintf("Cloning %s", url)
 	log.Info(m)

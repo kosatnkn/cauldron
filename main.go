@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/kosatnkn/cauldron/cli"
-	"github.com/kosatnkn/cauldron/config"
-	"github.com/kosatnkn/cauldron/project"
+	"github.com/kosatnkn/cauldron/v2/cli"
+	"github.com/kosatnkn/cauldron/v2/config"
+	"github.com/kosatnkn/cauldron/v2/project"
 )
 
 func main() {
@@ -11,22 +11,22 @@ func main() {
 	// init config
 	cfg := &config.Config{
 		Cauldron: config.Cauldron{
-			Version: "v1.4.1",
+			Version: "v2.0.0",
 		},
 		Project: config.Project{
 			SplashStyle: "small",
 		},
 		Base: config.Base{
-			Repo:       "https://github.com/kosatnkn/catalyst.git",
-			Module:     "github.com/kosatnkn/catalyst",
-			MinVersion: "v1.0.0",
-			MaxVersion: "v2.3.0",
+			Repo:             "https://github.com/kosatnkn/catalyst.git",
+			Module:           "github.com/kosatnkn/catalyst/v2",
+			MinVersion:       "v2.4.0",
+			MaxVersion:       "",
+			NextMajorVersion: "v3.0.0",
 			RemoveDirs: []string{
 				".git",
 				".github",
 			},
 			RemoveFiles: []string{
-				".travis.yml",
 				"doc.go",
 			},
 		},

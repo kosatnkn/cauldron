@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/kosatnkn/cauldron/config"
+	"github.com/kosatnkn/cauldron/v2/config"
 )
 
 // CleanConfig cleans values in config

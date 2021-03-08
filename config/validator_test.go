@@ -194,7 +194,7 @@ func TestCheckVersionInRangeFail(t *testing.T) {
 				t.Errorf("Need error, got nil")
 			}
 
-			if err.Error() != "Version out of range" {
+			if err.Error()[:20] != "Version out of range" {
 				t.Errorf(`Need '%s', got '%s'`, "", err.Error())
 			}
 		})

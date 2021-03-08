@@ -22,11 +22,12 @@ type Project struct {
 // Base holds configurations of the base project
 // that will be used to create a new project.
 type Base struct {
-	Repo        string
-	Module      string
-	Version     string
-	MinVersion  string
-	MaxVersion  string
-	RemoveDirs  []string
-	RemoveFiles []string
+	Repo             string
+	Module           string
+	Version          string
+	MinVersion       string
+	MaxVersion       string
+	NextMajorVersion string
+	RemoveDirs       []string
+	RemoveFiles      []string
 }

@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/Masterminds/semver/v3"
-	e "github.com/kosatnkn/cauldron/errors"
+	e "github.com/kosatnkn/cauldron/v2/errors"
 )
 
 // Validate validates the populated config struct.
@@ -89,16 +89,23 @@ func checkVersionInRange(cfg *Config) error {
 		return err
 	}
 
-	min := cfg.Base.MinVersion[1:]
-	max := cfg.Base.MaxVersion[1:]
-	c, err := semver.NewConstraint(fmt.Sprintf(">=%s, <=%s", min, max))
-	if err != nil {
-		return err
+	var c *semver.Constraints
+
+	if cfg.Base.MaxVersion == "" {
+		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <%s", cfg.Base.MinVersion, cfg.Base.NextMajorVersion))
+		if err != nil {
+			return err
+		}
+	} else {
+		c, err = semver.NewConstraint(fmt.Sprintf(">=%s, <=%s", cfg.Base.MinVersion, cfg.Base.MaxVersion))
+		if err != nil {
+			return err
+		}
 	}
 
-	ok, _ := c.Validate(v)
+	ok, errs := c.Validate(v)
 	if !ok {
-		return fmt.Errorf("Version out of range")
+		return fmt.Errorf("Version out of range, %s", errs[0].Error())
 	}
 
 	return nil

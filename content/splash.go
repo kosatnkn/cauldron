@@ -8,7 +8,7 @@ import (
 )
 
 // GenerateSplashStyle generates the content of the splash style file using the project name.
-func GenerateSplashStyle(name string, style string) string {
+func GenerateSplashStyle(name, style string) string {
 
 	splash := generateSplashASCII(name, style)
 
@@ -28,7 +28,7 @@ const StyleDefault string = `
 }
 
 // generateSplashASCII generates the ASCII art.
-func generateSplashASCII(name string, style string) string {
+func generateSplashASCII(name, style string) string {
 
 	splash := figure.NewFigure(name, style, true).String()
 

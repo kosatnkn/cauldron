@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/kosatnkn/cauldron/badge.svg?branch=master)](https://coveralls.io/github/kosatnkn/cauldron?branch=master)
 ![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kosatnkn/cauldron/v2.svg)](https://pkg.go.dev/github.com/kosatnkn/cauldron/v2)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kosatnkn/cauldron)](https://goreportcard.com/report/github.com/kosatnkn/cauldron)
 
 Project generator using [Catalyst](https://github.com/kosatnkn/catalyst) as a template.
@@ -16,10 +17,21 @@ The project that will be created uses `go.mod` for dependency management. This w
 
 Visit the [Catalyst](https://github.com/kosatnkn/catalyst) base project for more information.
 
+## Version 1 vs Version 2
+Version 1 of `Cauldron` supports creating projects using `Catalyst` versions `v1.0.0` to `v2.3.x`.
+
+Version 2 of `Cauldron` supports creating projects using `Catalyst` version `v2.4.0` and upwards.
+
 ## Installation
 
+**Version 1**
 ```bash
 go get github.com/kosatnkn/cauldron
+```
+
+**Version 2**
+```bash
+go get github.com/kosatnkn/cauldron/v2
 ```
 
 ## Usage
@@ -38,51 +50,11 @@ cauldron --name Sample --namespace github.com/username [--tag v1.0.0]
 - `-t --tag` Release version of `Catalyst` to be used. The latest version will be used if `-t` is not provided
 - `-h --help` Show help message
 
-This will create a new project with go.mod module path of `github.com/username/sample`
+This will create a new project with **go.mod** module path of `github.com/username/sample`
 
 Cauldron will do a `git init` on the newly created project but you will have to stage all the files in the project and do the first commit yourself.
 ```bash
 git add .
 
 git commit -m "first commit"
-```
-
-
-## Using Go mod
-
-Go mod is used as the dependency management mechanism. Visit [here](https://github.com/golang/go/wiki/Modules) for more details.
-
-Use go mod in projects that are within the `GOPATH`
-```bash
-export GO111MODULE=on
-```
-
-Initialize go mod
-```bash
-go mod init github.com/my/repo
-```
-
-View final versions that will be used in a build for all direct and indirect dependencies
-```bash
-go list -m all
-```
-View available minor and patch upgrades for all direct and indirect dependencies
-```bash
-go list -u -m all
-```
-Update all direct and indirect dependencies to latest minor or patch upgrades (pre-releases are ignored)
-```bash
-go get -u or go get -u=patch
-```
-Build or test all packages in the module when run from the module root directory
-```bash
-go build ./... or go test ./...
-```
-Prune any no-longer-needed dependencies from go.mod and add any dependencies needed for other combinations of OS, architecture, and build tags
-```bash
-go mod tidy
-```
-Optional step to create a vendor directory
-```bash
-go mod vendor
 ```
