@@ -24,14 +24,8 @@ Version 2 of `Cauldron` supports creating projects using `Catalyst` version `v2.
 
 ## Installation
 
-**Version 1**
 ```bash
 go get github.com/kosatnkn/cauldron
-```
-
-**Version 2**
-```bash
-go get github.com/kosatnkn/cauldron/v2
 ```
 
 ## Usage
