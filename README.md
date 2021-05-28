@@ -1,6 +1,7 @@
 # Cauldron
 
-[![Actions Status](https://github.com/kosatnkn/cauldron/workflows/CI/badge.svg)](https://github.com/kosatnkn/cauldron/actions)
+[![CI](https://github.com/kosatnkn/cauldron/actions/workflows/ci.yml/badge.svg)](https://github.com/kosatnkn/cauldron/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/kosatnkn/cauldron/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kosatnkn/cauldron/actions/workflows/codeql-analysis.yml)
 [![Coverage Status](https://coveralls.io/repos/github/kosatnkn/cauldron/badge.svg?branch=master)](https://coveralls.io/github/kosatnkn/cauldron?branch=master)
 ![Open Issues](https://img.shields.io/github/issues/kosatnkn/cauldron)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kosatnkn/cauldron)
