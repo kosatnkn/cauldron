@@ -11,7 +11,7 @@ func main() {
 	// init config
 	cfg := &config.Config{
 		Cauldron: config.Cauldron{
-			Version: "v2.0.0",
+			Version: "v2.0.1",
 		},
 		Project: config.Project{
 			SplashStyle: "small",
@@ -28,6 +28,7 @@ func main() {
 			},
 			RemoveFiles: []string{
 				"doc.go",
+				"LICENSE",
 			},
 		},
 	}
